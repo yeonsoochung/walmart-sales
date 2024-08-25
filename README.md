@@ -105,9 +105,11 @@ The FOODS_2 department contributed most to the increased revenue on SNAP days. T
 
 ## Data Transformation
 
-Among the files downloaded from Kaggle, I used the calendar, sales_train_evaluation, and sell_prices csv files, which are the ones I uploaded to this repo. The image below shows the hierarchy of products in the data:
+Among the files downloaded from Kaggle, I used the calendar, sales_train_evaluation, and sell_prices csv files, which are the ones I uploaded to this repo. The image below, which I obtained from a Medium article (https://towardsdatascience.com/m5-forecasting-accuracy-24d7f42130de) shows how the data is organized:
 
-
+<p align="center">
+<img src="images/data-org.PNG" alt="Alt text" width="1000"/>
+</p>
 
 Extensive transformations were applied to these data tables to make them conducive for use in PBI.
 
@@ -115,10 +117,16 @@ Extensive transformations were applied to these data tables to make them conduci
 
 I found it necessary to use Python to process the sales_train_evaluation.csv data due to the complexity of transforming it. It might be doable with SQL, but the level of complexity convinced me to use Python's Pandas library.
 
-Below is a snippet of the original data table:
+Below is a snippet of the original data table, which has 30,491 rows:
 
 <p align="center">
 <img src="images/sales-data-original.PNG" alt="Alt text" width="1000"/>
 </p>
 
-The columns continue numerically until "d_1941." The columns d_1 to d_1941 represent dates ranging from 2011-01-29 to 2016-06-19.
+The columns continue numerically until "d_1941." The columns d_1 to d_1941 represent dates ranging from 2011-01-29 to 2016-06-19. The dates need to be in rows for use with PBI, and each date will have as many rows as there were (distinct) items sold in each store that day. Below is a snippet of the post-transformed data table, which has 1,048,576 rows:
+
+<p align="center">
+<img src="images/sales-data-transformed.PNG" alt="Alt text" width="1000"/>
+</p>
+
+I uploaded here my "sales_data_transformation.py" script, which performed this task.
