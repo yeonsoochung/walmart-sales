@@ -126,7 +126,7 @@ Below is a snippet of the original data table, which has 30,491 rows:
 The columns continue numerically until "d_1941." The columns d_1 to d_1941 represent dates ranging from 2011-01-29 to 2016-06-19. The dates need to be in rows for use with PBI, and each date will have as many rows as there were (distinct) items sold in each store that day. Below is a snippet of the post-transformed data table, which has 1,048,576 rows:
 
 <p align="center">
-<img src="images/sales-data-transformed.PNG" alt="Alt text" width="1000"/>
+<img src="images/sales-data-transformed.PNG" alt="Alt text" width="600"/>
 </p>
 
 I uploaded here my "sales_data_transformation.py" script, which performed this task.
