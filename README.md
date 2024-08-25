@@ -28,7 +28,7 @@ Let’s say I’m interested in the revenue of stores in CA. I want to answer qu
 
 I visit the CA page of my report. From the line chart that plots store revenues, we can see that Store CA_2 had a sharp increase in revenue from 2015-05-01 to 2015-08-31 relative to the other three stores:
 
-![Alt text]<(images/ca-stores-rev.PNG) width="400" height="200" />
+<img src="images/ca-stores-rev.PNG" alt="Alt text" width="500"/>
 
 After adjusting the date range to this time frame and selecting CA_2 in the Store slicer, the line chart that visualizes departmental revenue demonstrates that this was largely driven by increased revenue from the FOODS_2, FOODS_3, and HOUSEHOLD_1 departments:
 
