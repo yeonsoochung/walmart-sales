@@ -28,21 +28,21 @@ Let’s say I’m interested in the revenue of stores in CA. I want to answer qu
 
 I visit the CA page of my report. From the line chart that plots store revenues, we can see that Store CA_2 had a sharp increase in revenue from 2015-05-01 to 2015-08-31 relative to the other three stores:
 
-![Alt text](images/ca-stores-rev.PNG)
+![Alt text](images/ca-stores-rev.PNG = 200x400)
 
 After adjusting the date range to this time frame and selecting CA_2 in the Store slicer, the line chart that visualizes departmental revenue demonstrates that this was largely driven by increased revenue from the FOODS_2, FOODS_3, and HOUSEHOLD_1 departments:
 
-![Alt text](images/ca2-dept-rev.png)
+![Alt text](images/ca2-dept-rev.PNG)
 
 The matrices provide further details. Using Matrix-1 and Matrix-2, I can see the contributions to monthly revenue and month-to-month change in revenue by the different categories, departments, and items. For example, if I examine the revenue growth from May 2015 to June 2015, I can generate the following insights:
 
 1.	Store CA_2 saw a net growth in revenue of $55,287.90 from May to June. Increase in revenue from the FOODS_2 department made up 35.15% of the $55,287.90. Increase in revenue from FOODS_3 made up 41.45%, and increase in revenue from HOUSEHOLD_1 made up 13.26%. These were the top three departments in terms of contribution to the $55,287.90 net growth, which agrees with what we concluded visually from the line charts.
 
-![Alt text](images/ca_2-mtx1.png)
+![Alt text](images/ca_2-mtx1.PNG)
 
 2.	I can use Matrix-2 to see which items contributed the most to the change in CA_2’s revenue from May to June through different filters. Over all categories and departments, the following items were the top six contributors to the revenue spike, and they all happened to be from the FOODS_3 department:
 
-![Alt text](images/ca2-mtx2a.png)
+![Alt text](images/ca2-mtx2a.PNG)
 
 I can filter to view the top items within another attribute or multiple attributes. For example, I filter on the FOODS_2 department:
 
