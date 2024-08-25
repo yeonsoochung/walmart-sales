@@ -81,5 +81,20 @@ FOODS_3_444, FOODS_2_266, FOODS_1_096, and FOODS_3_329 made up about 10% of the 
 
 Of course, an event is often not the only factor behind revenue changes, but this kind of insight would be valuable for business decisions regarding inventory, promotion, and advertising, especially if the dataset provided other relevant data such as those related to promotional campaigns.
 
+### SNAP Revenue Analysis
+
+Some brief background info: SNAP benefits are distributed for 10 days every month. These dates are the same each month depending on the month. For example: CA distributes them over the first 10 days of each month, but TX and WI spread the days out more throughout each month.
+From the “SNAP Analysis” page, I want to answer: 
+
+- What is the breakdown of revenue generated on SNAP days vs non-SNAP days? What percentage of the revenue comes from food sales on SNAP days vs non-SNAP days?
+- How do the percentages compare across states and stores? Which food departments and items contribute most to the difference in percentage between SNAP-day sales and non-SNAP-day sales?
+
+I can answer the above questions through different filter contexts via month/year and state/store. But across the entire dataset (across all dates, states, and stores), one of the line charts that the daily average revenue is higher on SNAP days than non-SNAP days every month. The FOODS category makes up 60.25% of SNAP-date revenue and 56.84% of non-SNAP-date revenue. It is not surprising that FOODS make up a larger percentage of SNAP-date revenue. Interestingly, CA and TX see this difference to be around a rather low 2-3%, but in WI, it is almost 6%. What’s behind this difference? Stores WI_2 and WI_3 are the main drivers. If you select just these two stores on the slicer, the matrix shows a 7.3% difference between “% Revenue SNAP” and “% Revenue Non-SNAP”:
+
+<p align="center">
+<img src="images/snap-mtx.PNG" alt="Alt text" width="600"/>
+</p>
+
+The FOODS_2 department contributed most to the increased revenue on SNAP days. This information can be used to guide decisions on inventory and promotional/marketing campaigns for products in this department at Stores WI_2 and WI_3 during SNAP dates.
 
 
