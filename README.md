@@ -108,7 +108,7 @@ The FOODS_2 department contributed most to the increased revenue on SNAP days. T
 Among the files downloaded from Kaggle, I used the calendar, sales_train_evaluation, and sell_prices csv files, which are the ones I uploaded to this repo. The image below, which I obtained from a Medium article (https://towardsdatascience.com/m5-forecasting-accuracy-24d7f42130de) shows how the data is organized:
 
 <p align="center">
-<img src="images/data-org.PNG" alt="Alt text" width="1000"/>
+<img src="images/data-org.PNG" alt="Alt text" width="800"/>
 </p>
 
 Extensive transformations were applied to these data tables to make them conducive for use in PBI.
