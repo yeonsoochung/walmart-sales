@@ -35,7 +35,7 @@ I visit the CA page of my report. From the line chart that plots store revenues,
 After adjusting the date range to this time frame and selecting CA_2 in the Store slicer, the line chart that visualizes departmental revenue demonstrates that this was largely driven by increased revenue from the FOODS_2, FOODS_3, and HOUSEHOLD_1 departments:
 
 <p align="center">
-<img src="images/ca2-dept-rev.PNG" alt="Alt text" width="800"/>
+<img src="images/ca2-dept-rev-tooltip.PNG" alt="Alt text" width="800"/>
 </p>
 
 The matrices provide further details. Using Matrix-1 and Matrix-2, I can see the contributions to monthly revenue and month-to-month change in revenue by the different categories, departments, and items. For example, if I examine the revenue growth from May 2015 to June 2015, I can generate the following insights:
