@@ -111,7 +111,7 @@ Among the files downloaded from Kaggle, I used the calendar, sales_train_evaluat
 <img src="images/data-org.PNG" alt="Alt text" width="800"/>
 </p>
 
-In addition to dates, the calendar csv file contains dates for events (e.g., holidays, major sporting events, etc.) and SNAP benefits. The sales_train_evaluation csv contains data on quantities of items sold each day for each store. The sell_prices csv contains week-to-week price data for every item.
+In addition to dates, the calendar csv file contains dates for events (e.g., holidays, major sporting events, etc.) and SNAP benefits. The sales_train_evaluation csv contains data on quantities of items sold each day for each store. The sell_prices csv contains week-to-week price data for every item (this price could differ from store to store given a particular week).
 
 Extensive transformations were applied to the original data tables to make them conducive for use in PBI.
 
