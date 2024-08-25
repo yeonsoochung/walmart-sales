@@ -1,9 +1,10 @@
 # Analysis of Walmart Sales Data
 
-Tools used: Power BI (DAX), SQL, and Python.
+**Tools used:** Power BI (DAX), SQL, and Python.
 
-Dataset: https://www.kaggle.com/competitions/m5-forecasting-accuracy/data
+**Dataset:** https://www.kaggle.com/competitions/m5-forecasting-accuracy/data
 
+## Insights
 In addition to the temporal revenue trends visualized by line charts and the aggregated metrics by column charts, my PBI report can be used to draw deeper insights such as:
 
 - The categories, departments, and individual items that contributed most to a month-to-month increase or decrease in revenue, both visually and quantitatively.
@@ -19,10 +20,12 @@ The rest of this README will:
 - Describe a few detailed examples of how insights can be generated from my PBI report.
 - Cover the data transformation and data modelling processes.
 
-## Example: Revenue Analysis
+### Example: Revenue Analysis
 
-Let’s say I’m interested in the revenue of stores in CA. I want to answer questions such as: why is a store performing differently from the others in terms of revenue generated at the category, department, and item levels? What are the main drivers of revenue change from one month to the next?
-  I visit the CA page of my report. From the line chart that plots store revenues, we can see that Store CA_2 had a sharp increase in revenue from 2015-05-01 to 2015-08-31 relative to the other three stores. After adjusting the date range to this time frame and selecting CA_2 in the Store slicer, the line chart that visualizes departmental revenue demonstrates that this was largely driven by increased revenue from the FOODS_2, FOODS_3, and HOUSEHOLD_1 departments. The matrices provide further details. Using Matrix-1 and Matrix-2, I can see the contributions to monthly revenue and month-to-month change in revenue by the different categories, departments, and items. For example, if I examine the revenue growth from May 2015 to June 2015, I can generate the following insights:
+Let’s say I’m interested in the revenue of stores in CA. I want to answer questions such as: 
+- Why is a store performing differently from the others in terms of revenue generated at the category, department, and item levels?
+- What are the main drivers of revenue change from one month to the next?
+I visit the CA page of my report. From the line chart that plots store revenues, we can see that Store CA_2 had a sharp increase in revenue from 2015-05-01 to 2015-08-31 relative to the other three stores. After adjusting the date range to this time frame and selecting CA_2 in the Store slicer, the line chart that visualizes departmental revenue demonstrates that this was largely driven by increased revenue from the FOODS_2, FOODS_3, and HOUSEHOLD_1 departments. The matrices provide further details. Using Matrix-1 and Matrix-2, I can see the contributions to monthly revenue and month-to-month change in revenue by the different categories, departments, and items. For example, if I examine the revenue growth from May 2015 to June 2015, I can generate the following insights:
 1.	Store CA_2 saw a net growth in revenue of $55,287.90 from May to June. Increase in revenue from the FOODS_2 department made up 35.15% of the $55,287.90. Increase in revenue from FOODS_3 made up 41.45%, and increase in revenue from HOUSEHOLD_1 made up 13.26%. These were the top three departments in terms of contribution to the $55,287.90 net growth, which agrees with what we concluded visually from the line charts.  
 2.	I can use Matrix-2 to see which items contributed the most to the change in CA_2’s revenue from May to June through different filters. Over all categories and departments, the following items were the top six contributors to the revenue spike, and they all happened to be from the FOODS_3 department:
  
