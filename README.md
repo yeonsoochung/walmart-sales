@@ -111,6 +111,8 @@ Among the files downloaded from Kaggle, I used the calendar, sales_train_evaluat
 <img src="images/data-org.PNG" alt="Alt text" width="800"/>
 </p>
 
+In addition to dates, the calendar csv file contains dates for events (e.g., holidays, major sporting events, etc.) and SNAP benefits. The sales_train_evaluation csv contains data on quantities of items sold each day for each store. The sell_prices csv contains week-to-week price data for every item.
+
 Extensive transformations were applied to the original data tables to make them conducive for use in PBI.
 
 ### Sales Data Transformation with Python
@@ -133,6 +135,6 @@ I uploaded here my **sales_data_transformation.py** script, which performed this
 
 ### Transformations with SQL
 
-I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_prices.csv files to PostgreSQL. I imported the data tables as views into PBI, and I applied the following processing steps to create those views:
+I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_prices.csv files to PostgreSQL. I imported data as views into PBI, and I applied the following processing steps to create those views:
 
 
