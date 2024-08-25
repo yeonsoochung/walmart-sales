@@ -7,7 +7,7 @@
 ## Insights
 In addition to the temporal revenue trends visualized by line charts and the aggregated metrics by column charts, my PBI report can be used to draw deeper insights such as:
 
-- The categories, departments, and individual items that contributed most to a month-to-month increase or decrease in revenue, both visually and quantitatively.
+- The categories, departments (which are subcategories), and individual items that contributed most to a month-to-month increase or decrease in revenue, both visually and quantitatively.
 - Week-to-week revenue changes that examines the revenue generated during the week of notable events (e.g., holidays, sporting events, etc.) and compare them with neighboring weeks. Revenue changes are quantitatively broken down by categories, departments, and individual items.
 - Generally, days that SNAP (food assistance) benefits are distributed see higher average daily sales than non-SNAP days. These differences are visualized and quantified across states and stores. Furthermore, the (percentage) breakdown of SNAP revenue and non-SNAP revenue by category, department, and item can be compared quantitatively.
   - In relation, revenue trends aggregated at the weekly level show pretty consistent spikes at the first two weeks of each month, which coincide with the part of the month when SNAP benefits are distributed.
@@ -103,4 +103,22 @@ The FOODS category makes up 60.25% of SNAP-date revenue and 56.84% of non-SNAP-d
 
 The FOODS_2 department contributed most to the increased revenue on SNAP days. This information can be used to guide decisions on inventory and promotional/marketing campaigns for products in this department at Stores WI_2 and WI_3 during SNAP dates.
 
+## Data Transformation
 
+Among the files downloaded from Kaggle, I used the calendar, sales_train_evaluation, and sell_prices csv files, which are the ones I uploaded to this repo. The image below shows the hierarchy of products in the data:
+
+
+
+Extensive transformations were applied to these data tables to make them conducive for use in PBI.
+
+### Sales Data Transformation with Python
+
+I found it necessary to use Python to process the sales_train_evaluation.csv data due to the complexity of transforming it. It might be doable with SQL, but the level of complexity convinced me to use Python's Pandas library.
+
+Below is a snippet of the original data table:
+
+<p align="center">
+<img src="images/sales-data-original.PNG" alt="Alt text" width="1000"/>
+</p>
+
+The columns continue numerically until "d_1941." The columns d_1 to d_1941 represent dates ranging from 2011-01-29 to 2016-06-19.
