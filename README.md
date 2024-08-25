@@ -68,13 +68,13 @@ For example, I was able to generate the following insight: There is a notable de
 2.	Let’s look more closely at the week of St. Patrick’s Day in 2014 for Store WI_2, which saw a 22.55% drop in revenue that week. I can use Matrix-3 to see how the categories and departments contributed to the revenue decrease (below is Matrix-2 with the appropriate filters):
  
 <p align="center">
-<img src="images/events-mtx3.PNG" alt="Alt text" width="600"/>
+<img src="images/events-mtx-3.PNG" alt="Alt text" width="600"/>
 </p>
 
 3.	With the same filter setting, I sort Matrix-4 by week-to-week revenue change in ascending order to rank the items whose revenue drop contributed most to total weekly revenue for WI_2:
  
 <p align="center">
-<img src="images/events-mtx4.PNG" alt="Alt text" width="600"/>
+<img src="images/events-mtx-4.PNG" alt="Alt text" width="600"/>
 </p>
 
 FOODS_3_444, FOODS_2_266, FOODS_1_096, and FOODS_3_329 made up about 10% of the ($20,382.75) drop in weekly revenue.
