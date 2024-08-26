@@ -137,38 +137,62 @@ I uploaded here my **sales_data_transformation.py** script, which performed this
 
 I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_prices.csv files to PostgreSQL. Before importing data as views into PBI, I applied the following processing steps to create those views:
 
-1.	I added columns for month name and quarter to the calendar table.
+1.	I added columns for month name and quarter to the calendar table:
 
-```
-create view calendar_view ("Date", "Week ID", "Weekday", "Day Number", "Month Number", "Month", "Quarter", "Year") as (
-	select date, week_id, weekday, wday, month,
-		case
-			when month = 1 then 'January'
-			when month = 2 then 'February'
-			when month = 3 then 'March'
-			when month = 4 then 'April'
-			when month = 5 then 'May'
-			when month = 6 then 'June'		
-			when month = 7 then 'July'
-			when month = 8 then 'August'
-			when month = 9 then 'September'
-			when month = 10 then 'October'
-			when month = 11 then 'November'
-			when month = 12 then 'December'
-		end as month_name,
-		case
-			when month in (1, 2, 3) then 'Q1'
-			when month in (4, 5, 6) then 'Q2'
-			when month in (7, 8, 9) then 'Q3'
-			when month in (10, 11, 12) then 'Q4'
-		end as quarter,
-		year
-	from calendar
-	order by date
-);
-```
+	```
+	create view calendar_view ("Date", "Week ID", "Weekday", "Day Number", "Month Number", "Month", "Quarter", "Year") as (
+		select date, week_id, weekday, wday, month,
+			case
+				when month = 1 then 'January'
+				when month = 2 then 'February'
+				when month = 3 then 'March'
+				when month = 4 then 'April'
+				when month = 5 then 'May'
+				when month = 6 then 'June'		
+				when month = 7 then 'July'
+				when month = 8 then 'August'
+				when month = 9 then 'September'
+				when month = 10 then 'October'
+				when month = 11 then 'November'
+				when month = 12 then 'December'
+			end as month_name,
+			case
+				when month in (1, 2, 3) then 'Q1'
+				when month in (4, 5, 6) then 'Q2'
+				when month in (7, 8, 9) then 'Q3'
+				when month in (10, 11, 12) then 'Q4'
+			end as quarter,
+			year
+		from calendar
+		order by date
+	);
+	```
+	Below is the first 10 rows of calendar_view:
 
-2.	Created a separate view for event dates.
+ 	<p align="center">
+	<img src="images/calendar_view.PNG" alt="Alt text" width="600"/>
+	</p>
+
+2.	Created a separate view for event dates:
+
+	```
+	create view events_calendar as (
+		select date as "Date", event_name_1 as "Event Name", event_type_1 as "Event Type"
+		from calendar
+		where event_name_1 is not null
+		union
+		select date, event_name_2, event_type_2
+		from calendar
+		where event_name_2 is not null
+	);
+ 	```
+
+   	Below is the first 10 rows of events_calendar:
+	
+   	<p align="center">
+	<img src="images/events_calendar.PNG" alt="Alt text" width="600"/>
+	</p>
+
 3.	I took the SNAP dates information from calendar.csv and added them as a column to sales_data.csv.
   a.	First step was to use extract the dates, snap_CA, snap_TX, and snap_WI columns from the calendar table.
   b.	The statement below performs two joins to do the following:
