@@ -260,7 +260,7 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 		create index idx_prices_store_item on prices_mv("Store", "Item", "Week ID");
 		```
 	
-   	 c. 	Thanks to indexing, the join operation below will run much more quicky (~1 min 30 sec) than without it (the query was still running after 30 min). Recall that I also have to join on "Week ID" to account for week-to-week item price changes.
+   	 c. Thanks to indexing, the join operation below will run much more quicky (~1 min 30 sec) than without it (the query was still running after 30 min). Recall that I also have to join on "Week ID" to account for week-to-week item price changes.
 	
 		```
 		create materialized view sales_info_mv as (
