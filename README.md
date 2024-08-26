@@ -237,7 +237,7 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 	);
 	```
 	
-   The first join operation replaced “d_i” values (d_1, d_2, …, d_1941) with their corresponding dates (2011-01-29 to 2016-06-19). The second one added a column of {0, 1} as SNAP dates to sales_intermed_view (created above), which will eventually become sales_view.    	
+   	The first join operation replaced “d_i” values (d_1, d_2, …, d_1941) with their corresponding dates (2011-01-29 to 2016-06-19). The second one added a column of {0, 1} as SNAP dates to sales_intermed_view (created above), which will eventually become sales_view.    	
 
 4.	I took a few steps to add a column of unit prices for the item associated with each row in sales_intermed_view.
 
