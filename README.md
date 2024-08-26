@@ -195,7 +195,7 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 
 3.	I took the SNAP dates information from calendar.csv and added them as a column to sales_data.csv.
 
-  	a.	First step was to use extract the dates, snap_CA, snap_TX, and snap_WI columns from the calendar table.
+  	a. First step was to use extract the dates, snap_CA, snap_TX, and snap_WI columns from the calendar table.
 	
 		```
 		create view snap_calendar ("Date", "State", "SNAP") as ( 
@@ -217,7 +217,7 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 	<img src="images/snap_calendar.PNG" alt="Alt text" width="300"/>
 	</p>
 	
-  	b.	The statement below performs two join operations, which I'll explain:
+  	b. The statement below performs two join operations, which I'll explain:
 	
 		```
 		create view sales_intermed_view ("Date", "Week ID", "Item", "Dept", "Category", "Store", "State", "Quantity") as (
@@ -228,7 +228,7 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 					select date, week_id, d
 					from calendar
 				) dd
-				on s.day = dd.d
+				on s.day = dd.d	
 			)
 			select sd.*, sc."SNAP"
 			from sales_dates sd
@@ -241,7 +241,7 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 
 4.	I took a few steps to add a column of unit prices for the item associated with each row in sales_intermed_view.
 
-   	a. 	I created materialized views of sales_intermed_view and the prices table so that I could add indexes to them for query optimization:
+   	a. I created materialized views of sales_intermed_view and the prices table so that I could add indexes to them for query optimization:
 	
 		```
 		create materialized view sales_intermed_mv as (
@@ -253,7 +253,7 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 		);
 		```
 	
-   	b. 	I created indexes on the materialized views:
+   	b. I created indexes on the materialized views:
 	
 		```
 		create index idx_sales_store_item on sales_intermed_mv("Store", "Item", "Week ID");
@@ -272,7 +272,7 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 		);
 		```
 	
-   	d. 	Finally, I sort the query result (sales_info_mv) by date to create my sales_view:
+   	d. Finally, I sort the query result (sales_info_mv) by date to create my sales_view:
 	
 		```
 		create view sales_view as (
