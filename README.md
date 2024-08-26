@@ -195,7 +195,7 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 
 3.	I took the SNAP dates information from calendar.csv and added them as a column to sales_data.csv.
 
-  	a. First step was to use extract the dates, snap_CA, snap_TX, and snap_WI columns from the calendar table.
+	a. First step was to use extract the dates, snap_CA, snap_TX, and snap_WI columns from the calendar table.
 	
 	```
 	create view snap_calendar ("Date", "State", "SNAP") as ( 
