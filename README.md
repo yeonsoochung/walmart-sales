@@ -135,6 +135,6 @@ I uploaded here my **sales_data_transformation.py** script, which performed this
 
 ### Transformations with SQL
 
-I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_prices.csv files to PostgreSQL. I imported data as views into PBI, and I applied the following processing steps to create those views:
+I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_prices.csv files to PostgreSQL. Before importing data as views into PBI, I applied the following processing steps to create those views:
 
 
