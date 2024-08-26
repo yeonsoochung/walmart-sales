@@ -284,7 +284,7 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 	The first 10 rows sales_view:
 
 	<p align="center">
-	<img src="images/sales_view.PNG" alt="Alt text" width="900"/>
+	<img src="images/sales_view.PNG" alt="Alt text" width="1000"/>
 	</p>
   
 5.	The views that I import to PBI are: sales_view, events_calendar, and calendar_view.
