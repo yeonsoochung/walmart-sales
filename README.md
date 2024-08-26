@@ -125,7 +125,7 @@ Below is a snippet of the original data table, which has 30,491 rows:
 <img src="images/sales-data-original.PNG" alt="Alt text" width="1000"/>
 </p>
 
-The columns continue numerically until "d_1941." The columns d_1 to d_1941 represent dates ranging from 2011-01-29 to 2016-06-19. The dates need to be in rows for use with PBI, and each date will have as many rows as there were (distinct) items sold in each store that day. Below is a snippet of the post-transformed data table (uploaded to this repo as **sales_data.csv**), which has 1,048,576 rows:
+The columns continue numerically until "d_1941." The columns d_1 to d_1941 represent dates ranging from 2011-01-29 to 2016-06-19. The dates need to be in rows for use with PBI, and each date will have as many rows as there were (distinct) items sold in each store that day. Below is a snippet of the post-transformed data table (uploaded to this repo as **sales_data.csv**), which has 18,550,276 rows:
 
 <p align="center">
 <img src="images/sales-data-transformed.PNG" alt="Alt text" width="600"/>
@@ -137,4 +137,44 @@ I uploaded here my **sales_data_transformation.py** script, which performed this
 
 I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_prices.csv files to PostgreSQL. Before importing data as views into PBI, I applied the following processing steps to create those views:
 
+1.	I added columns for month name and quarter to the calendar table.
+
+'''
+create view calendar_view ("Date", "Week ID", "Weekday", "Day Number", "Month Number", "Month", "Quarter", "Year") as (
+	select date, week_id, weekday, wday, month,
+		case
+			when month = 1 then 'January'
+			when month = 2 then 'February'
+			when month = 3 then 'March'
+			when month = 4 then 'April'
+			when month = 5 then 'May'
+			when month = 6 then 'June'		
+			when month = 7 then 'July'
+			when month = 8 then 'August'
+			when month = 9 then 'September'
+			when month = 10 then 'October'
+			when month = 11 then 'November'
+			when month = 12 then 'December'
+		end as month_name,
+		case
+			when month in (1, 2, 3) then 'Q1'
+			when month in (4, 5, 6) then 'Q2'
+			when month in (7, 8, 9) then 'Q3'
+			when month in (10, 11, 12) then 'Q4'
+		end as quarter,
+		year
+	from calendar
+	order by date
+);
+'''
+
+2.	Created a separate view for event dates.
+3.	I took the SNAP dates information from calendar.csv and added them as a column to sales_data.csv.
+  a.	First step was to use extract the dates, snap_CA, snap_TX, and snap_WI columns from the calendar table.
+  b.	The statement below performs two joins to do the following:
+    i.	Replaced “d_i” values (d_1, d_2, …, d_1941) with their corresponding dates.
+    ii.	Added a column of {0, 1} as SNAP dates to sales_intermediate_view, which will eventually become sales_view.
+4.	Materialized views were created so that I could add indexes to them. This optimized the join query that added a column for unit price, which required joining on three attributes: the item, store, and week ID.
+<image>
+Finally, I create sales_view by ordering the above query result by date.
 
