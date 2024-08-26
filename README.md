@@ -170,7 +170,7 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 	Below is the first 10 rows of calendar_view:
 
  	<p align="center">
-	<img src="images/calendar_view.PNG" alt="Alt text" width="600"/>
+	<img src="images/calendar_view.PNG" alt="Alt text" width="800"/>
 	</p>
 
 2.	Created a separate view for event dates:
@@ -190,7 +190,7 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
    	Below is the first 10 rows of events_calendar:
 	
    	<p align="center">
-	<img src="images/events_calendar.PNG" alt="Alt text" width="600"/>
+	<img src="images/events_calendar.PNG" alt="Alt text" width="400"/>
 	</p>
 
 3.	I took the SNAP dates information from calendar.csv and added them as a column to sales_data.csv.
