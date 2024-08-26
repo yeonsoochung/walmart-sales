@@ -211,7 +211,7 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 		);
 	 	```
 	
-		First 10 rows of snap_calendar:
+	First 10 rows of snap_calendar:
 
 	<p align="center">
 	<img src="images/snap_calendar.PNG" alt="Alt text" width="300"/>
@@ -237,7 +237,7 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 		);
 		```
 	
-    		The first join operation replaced “d_i” values (d_1, d_2, …, d_1941) with their corresponding dates (2011-01-29 to 2016-06-19). The second one added a column of {0, 1} as SNAP dates to sales_intermed_view (created above), which will eventually become sales_view.    	
+   The first join operation replaced “d_i” values (d_1, d_2, …, d_1941) with their corresponding dates (2011-01-29 to 2016-06-19). The second one added a column of {0, 1} as SNAP dates to sales_intermed_view (created above), which will eventually become sales_view.    	
 
 4.	I took a few steps to add a column of unit prices for the item associated with each row in sales_intermed_view.
 
@@ -253,7 +253,7 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 	);
 	```
 	
-    	b. 	I created indexes on the materialized views:
+   b. 	I created indexes on the materialized views:
 	
 	```
 	create index idx_sales_store_item on sales_intermed_mv("Store", "Item", "Week ID");
@@ -281,10 +281,10 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 	);
 	```
 		
-		The first 10 rows sales_view:
+	The first 10 rows sales_view:
 
 	<p align="center">
-	<img src="images/sales_view.PNG" alt="Alt text" width="800"/>
+	<img src="images/sales_view.PNG" alt="Alt text" width="900"/>
 	</p>
   
 5.	The views that I import to PBI are: sales_view, events_calendar, and calendar_view.
