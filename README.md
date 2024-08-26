@@ -139,7 +139,7 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 
 1.	I added columns for month name and quarter to the calendar table.
 
-'''
+```
 create view calendar_view ("Date", "Week ID", "Weekday", "Day Number", "Month Number", "Month", "Quarter", "Year") as (
 	select date, week_id, weekday, wday, month,
 		case
@@ -166,7 +166,7 @@ create view calendar_view ("Date", "Week ID", "Weekday", "Day Number", "Month Nu
 	from calendar
 	order by date
 );
-'''
+```
 
 2.	Created a separate view for event dates.
 3.	I took the SNAP dates information from calendar.csv and added them as a column to sales_data.csv.
