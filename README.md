@@ -219,76 +219,74 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 	
   b.	The statement below performs two join operations, which I'll explain:
 	
-	  	```
-		create view sales_intermed_view ("Date", "Week ID", "Item", "Dept", "Category", "Store", "State", "Quantity") as (
-			with sales_dates as (
-				select date, week_id, item_id, dept_id, cat_id, store_id, state_id, qty
-				from sales s
-				join (
-					select date, week_id, d
-					from calendar
-				) dd
-				on s.day = dd.d
-			)
-			select sd.*, sc."SNAP"
-			from sales_dates sd
-			join snap_calendar sc
-			on sd.date = sc."Date" and sd.state_id = sc."State"
-		);
-	 	```
+	```
+	create view sales_intermed_view ("Date", "Week ID", "Item", "Dept", "Category", "Store", "State", "Quantity") as (
+		with sales_dates as (
+			select date, week_id, item_id, dept_id, cat_id, store_id, state_id, qty
+			from sales s
+			join (
+				select date, week_id, d
+				from calendar
+			) dd
+			on s.day = dd.d
+		)
+		select sd.*, sc."SNAP"
+		from sales_dates sd
+		join snap_calendar sc
+		on sd.date = sc."Date" and sd.state_id = sc."State"
+	);
+	```
 	
-    i.	The first join operation replaced “d_i” values (d_1, d_2, …, d_1941) with their corresponding dates (2011-01-29 to 2016-06-19).
-
-    ii.	The second one added a column of {0, 1} as SNAP dates to sales_intermed_view (created above), which will eventually become sales_view.    	
+    	The first join operation replaced “d_i” values (d_1, d_2, …, d_1941) with their corresponding dates (2011-01-29 to 2016-06-19). The second one added a column of {0, 1} as SNAP dates to sales_intermed_view (created above), which will eventually become sales_view.    	
 
 4.	I took a few steps to add a column of unit prices for the item associated with each row in sales_intermed_view.
 
-   a. I created materialized views of sales_intermed_view and the prices table so that I could add indexes to them for query optimization:
+   	a. I created materialized views of sales_intermed_view and the prices table so that I could add indexes to them for query optimization:
 	
-		```
-		create materialized view sales_intermed_mv as (
-			select * from sales_intermed_view
-		);
-		
-		create materialized view prices_mv ("Store", "Item", "Week ID", "Unit Price") as (
-			select * from prices
-		);
-	 	```
+	```
+	create materialized view sales_intermed_mv as (
+		select * from sales_intermed_view
+	);
 	
-    b. I created indexes on the materialized views:
+	create materialized view prices_mv ("Store", "Item", "Week ID", "Unit Price") as (
+		select * from prices
+	);
+	```
 	
-		```
-		create index idx_sales_store_item on sales_intermed_mv("Store", "Item", "Week ID");
-		create index idx_prices_store_item on prices_mv("Store", "Item", "Week ID");
-	  	```
+    	b. I created indexes on the materialized views:
+	
+	```
+	create index idx_sales_store_item on sales_intermed_mv("Store", "Item", "Week ID");
+	create index idx_prices_store_item on prices_mv("Store", "Item", "Week ID");
+	```
 	
     c. Thanks to indexing, the join operation below will run much more quicky (~1 min 30 sec) than without it (the query was still running after 30 min). Recall that I also have to join on "Week ID" to account for week-to-week item price changes.
 	
-		```
-		create materialized view sales_info_mv as (
-			select smv.*,
-				pmv."Unit Price"
-			from sales_intermed_mv smv
-			join prices_mv pmv
-			on smv."Store" = pmv."Store" and smv."Item" = pmv."Item" and smv."Week ID" = pmv."Week ID"
-		);
-	   	```
+	```
+	create materialized view sales_info_mv as (
+		select smv.*,
+			pmv."Unit Price"
+		from sales_intermed_mv smv
+		join prices_mv pmv
+		on smv."Store" = pmv."Store" and smv."Item" = pmv."Item" and smv."Week ID" = pmv."Week ID"
+	);
+	```
 	
    d. Finally, I sort the query result (sales_info_mv) by date to create my sales_view:
 	
-		```
-		create view sales_view as (
-			select * from sales_info_mv
-			order by "Date"
-		);
-	 	```
+	```
+	create view sales_view as (
+		select * from sales_info_mv
+		order by "Date"
+	);
+	```
 	
 	The first 10 rows sales_view:
 
-	<p align="center">
-	<img src="images/sales_view.PNG" alt="Alt text" width="400"/>
-	</p>
-	  
+<p align="center">
+<img src="images/sales_view.PNG" alt="Alt text" width="400"/>
+</p>
+  
 5.	The views that I import to PBI are: sales_view, events_calendar, and calendar_view.
 
 
