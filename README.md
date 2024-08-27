@@ -295,13 +295,33 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 Once I loaded the three views as PBI tables, I added three columns to the calendar table via Power Query. They are columns called "Start of Month", "Start of Quarter", and "Start of Week"; each column is a transformation applied to the "Date" column. Below is a snippet of this modified calendar table:
 
 <p align="center">
-<img src="images/calendar-pbi.PNG" alt="Alt text" width="800"/>
+<img src="images/calendar-pbi.PNG" alt="Alt text" width="900"/>
 </p>
 
 The three tables are connected to each via their date columns, resulting in the following schema:
 
 <p align="center">
-<img src="images/schema.PNG" alt="Alt text" width="600"/>
+<img src="images/schema.PNG" alt="Alt text" width="700"/>
 </p>
 
+I applied the following DAX functions:
+
+- Iterator functions such as SUMX to create the revenue measure and MAXX to extract the max date in a virtual table's column.
+- CALCULATE function to compute revenue with various filter modifiers, such as REMOVEFILTER, ALLEXCEPT, and ALLSELECTED.
+- CALCULATETABLE to create virtual tables within DAX queries.
+- SUMMARIZE and COUNTROW functions to count the number of SNAP and non-SNAP days per month.
+- HASONEVALUE function to apply the correct filters in matrices.
+- Time intelligence functions such as DATEADD and PARALLELPERIOD.
+- VALUES function to obtain distinct dates.
+- CROSSFILTER function to activate bi-directional filtering and connect the events table to the sales table. The query that used this function, which created the [Revenue: Week of Event] measure, was the nexus of my "Events Analysis" page.
+
+I would also like to make note of a several more features of my report:
+
+- Months of Jan. 2011 and Apr. – Jun. 2016 were filtered out of report because of drastic spike and drop of revenue plot at those edge dates.
+- The original dataset assigned values 1-7 to the days of the week, starting with 1 for Saturday, so, I have set the first day of the week to Saturday.
+- I added columns “Start of Week”, “Start of Month”, and “Start of Quarter” to the calendar_view table via Power Query. This is how I plotted aggregate values in my temporal charts. This is why, for example, when temporal revenue visuals are drilled down to the month level, the months are labeled as MM/01/YYYY. I found this way to be easier for creating visuals rather than using date hierarchies.
+- The YTD (year-to-date) revenue KPI cards display the YTD revenue starting from Jan. 1 of the last date in the filtered date range. For example, if the date filter is set from 2015-05-01 to 2015-09-15, then the YTD revenue is revenue from 2015-01-01 to 2015-09-15; and the Prev. YTD is revenue from 2014-01-01 to 2014-09-15.
+- Similarly, the MTD (month-to-date) KPI cards display the MTD revenue starting from the beginning of the month that is at the end of the date filter range. Ex: if the date range is filtered to 2014-03-08 to 2014-03-22, the MTD revenue is revenue from 2014-03-01 to 2014-03-22; and the Prev. MTD is revenue from 2013-03-01 to 2013-03-22.
+
+### Conclusion
 
