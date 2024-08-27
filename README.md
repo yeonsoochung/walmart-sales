@@ -290,9 +290,11 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
   
 5.	The views that I import to PBI are: sales_view, events_calendar, and calendar_view.
 
+### SQL EDA
+
 ### Data Model and DAX
 
-Once I loaded the three views as PBI tables, I added three columns to the calendar table via Power Query. They are columns called "Start of Month", "Start of Quarter", and "Start of Week"; each column is a transformation applied to the "Date" column. Below is a snippet of this modified calendar table:
+Again, the three views I imported to PBI are: sales_view, events_calendar, and calendar_view. Once I loaded them, I added three columns to the calendar table via Power Query. They are columns called "Start of Month", "Start of Quarter", and "Start of Week"; each column is a transformation applied to the "Date" column. Below is a snippet of this modified calendar table:
 
 <p align="center">
 <img src="images/calendar-pbi.PNG" alt="Alt text" width="900"/>
