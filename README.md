@@ -19,6 +19,7 @@ The rest of this README will:
 
 - Describe a few detailed examples of how insights can be generated from my PBI report.
 - Cover the data transformation and data modelling processes.
+- Some notes on how I used Power BI.
 
 ### Example: Revenue Analysis
 
@@ -289,5 +290,18 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
   
 5.	The views that I import to PBI are: sales_view, events_calendar, and calendar_view.
 
+### Data Model and DAX
+
+Once I loaded the three views as PBI tables, I added three columns to the calendar table via Power Query. They are columns called "Start of Month", "Start of Quarter", and "Start of Week"; each column is a transformation applied to the "Date" column. Below is a snippet of this modified calendar table:
+
+<p align="center">
+<img src="images/calendar_pbi.PNG" alt="Alt text" width="1000"/>
+</p>
+
+The three tables are connected to each via their date columns, resulting in the following schema:
+
+<p align="center">
+<img src="images/schema.PNG" alt="Alt text" width="1000"/>
+</p>
 
 
