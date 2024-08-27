@@ -295,13 +295,13 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 Once I loaded the three views as PBI tables, I added three columns to the calendar table via Power Query. They are columns called "Start of Month", "Start of Quarter", and "Start of Week"; each column is a transformation applied to the "Date" column. Below is a snippet of this modified calendar table:
 
 <p align="center">
-<img src="images/calendar_pbi.PNG" alt="Alt text" width="1000"/>
+<img src="images/calendar-pbi.PNG" alt="Alt text" width="800"/>
 </p>
 
 The three tables are connected to each via their date columns, resulting in the following schema:
 
 <p align="center">
-<img src="images/schema.PNG" alt="Alt text" width="1000"/>
+<img src="images/schema.PNG" alt="Alt text" width="600"/>
 </p>
 
 
