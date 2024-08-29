@@ -297,7 +297,7 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 - I computed the quarter-over-quarter (QOQ) % change in revenue for each store:
 
   ```
-  	drop materialized view if exists sales_price_qy_mv;
+  drop materialized view if exists sales_price_qy_mv;
 	create materialized view sales_price_qy_mv as (
 		select sap_mv.*,
 			cv."Quarter", cv."Year"
@@ -305,7 +305,7 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 			(select "Date", "Quarter", "Year" from calendar_view) cv
 		where sap_mv."Date" = cv."Date"
 	);
-	
+  	
 	with qy_store_revenue as (
 		select "Store", "Quarter", "Year", 
 			sum("Quantity" * "Unit Price") as "Revenue"
@@ -318,7 +318,6 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 			-- "Revenue" over (partition by "Store" order by "Q-Y" rows between 1 preceding and current row) as "Previous Q Revenue"
 		from qy_store_revenue
 	)
-	-- select * from qoq_store_revenue;
 	select "Store", "Quarter", "Year", "Revenue", 
 		round(("Revenue" - "Previous Q Revenue")/"Previous Q Revenue" * 100, 2) as "QoQ % Change"
 	from qoq_store_revenue;
