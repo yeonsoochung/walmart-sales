@@ -78,7 +78,7 @@ I acknowledge that the "Events Analysis" page of my report is a bit crowded and 
 
 For example, I was able to generate the following insight: There is a notable decrease in revenue during the week of St. Patrick’s Day. That week generally saw a decrease in revenue compared to the previous week every year from 2011-2016, aggregated across all stores/states. 2012-2014 saw drops of more than 10% each year. In all six years, the week after the event also saw decreases. 
 1.	WI stores experience the largest drop in revenue compared to the other states, especially due to Stores WI_2 and WI_3.
-2.	Let’s look more closely at the week of St. Patrick’s Day in 2014 for Store WI_2, which saw a 22.55%, or $20,382.75, drop in revenue that week. I can use Matrix-3 to see how the categories and departments contributed to the revenue decrease (below is Matrix-2 with the appropriate filters):
+2.	Let’s look more closely at the week of St. Patrick’s Day in 2014 for Store WI_2, which saw a 22.55%, or $20,382.75, drop in revenue that week. I can use Matrix-3 to see how the categories and departments contributed to the revenue decrease (below is Matrix-3 with the appropriate filters):
  
   <p align="center">
   <img src="images/events-mtx-3.PNG" alt="Alt text" width="600"/>
