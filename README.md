@@ -62,7 +62,7 @@ The matrices provide further details. Using Matrix-1 and Matrix-2, I can see the
 2.	I can use Matrix-2 to see which items contributed the most to the change in CA_2’s revenue from May to June through different filters. Over all categories and departments, the following items were the top six contributors to the revenue spike, and they all happened to be from the FOODS_3 department:
 
   <p align="center">
-  <img src="images/ca2-mtx2a.PNG" alt="Alt text" width="600"/>
+  <img src="images/ca2-mtx2.PNG" alt="Alt text" width="600"/>
   </p>
 
   I can modify the filter selections to view the top items within different filter contexts (ex: what are the ).
