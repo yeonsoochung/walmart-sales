@@ -7,21 +7,23 @@
 ## Insights
 In addition to the temporal revenue trends visualized by line charts and the aggregated metrics by column charts, my PBI report can be used to draw deeper insights such as:
 
-- The categories, departments (which are subcategories), and individual items that contributed most to a month-to-month increase or decrease in revenue, both visually and quantitatively.
-- Week-to-week revenue changes that examines the revenue generated during the week of notable events (e.g., holidays, sporting events, etc.) and compare them with neighboring weeks. Revenue changes are quantitatively broken down by categories, departments, and individual items.
+- The categories (FOODS, HOBBIES, and HOUSEHOLD), departments (which are subcategories), and individual items that contributed most to a month-to-month increase or decrease in revenue, both visually and quantitatively.
+- Weekly revenue generated during the week of notable events (e.g., holidays, major sporting events, etc.) compared with neighboring weeks. Revenue changes are quantitatively broken down by categories, departments, and individual items to enable comparison at those grains.
 - Generally, days that SNAP (food assistance) benefits are distributed see higher average daily sales than non-SNAP days. These differences are visualized and quantified across states and stores. Furthermore, the (percentage) breakdown of SNAP revenue and non-SNAP revenue by category, department, and item can be compared quantitatively.
-  - In relation, revenue trends aggregated at the weekly level show pretty consistent spikes at the first two weeks of each month, which coincide with the part of the month when SNAP benefits are distributed.
-- Time intelligence functions were applied throughout my report to compare revenue and revenue breakdown (including percentages) over week-to-week, month-to-month, and year-to-year time periods.
+  - Revenue trends aggregated at the weekly level show pretty consistent spikes at the first two weeks of each month, which coincide with the part of the month when SNAP benefits are distributed.
+  - At the daily level, revenue spikes occur on Saturdays/Sundays.
+- Time intelligence functions were applied throughout my report to compare revenue and revenue breakdown (by state, store, category, department, and item) over week-to-week, month-to-month, and year-to-year time periods.
 
-The insights that my report provides can be used to guide decisions on promotional campaigns, ads, and marketing. I could easily recreate this report with a [Quantity Sold] measure instead of [Revenue], which would provide actionable insights on inventory management.
+The insights that my report provides can be used to guide decisions on promotional campaigns, and I could easily recreate this report with a [Quantity Sold] measure instead of [Revenue], which would provide actionable insights on inventory management.
 
 The rest of this README will:
 
+- Go over how the Kaggle data is organized at a high-level.
 - Describe a few detailed examples of how insights can be generated from my PBI report.
 - Cover the data transformation and data modelling processes.
 - Some notes on how I used Power BI.
 
-### Example: Revenue Analysis
+## Example: Revenue Analysis
 
 Let’s say I’m interested in the revenue of stores in CA. I want to answer questions such as: 
 - Which store(s) performed differently from the others in terms of revenue generated?
@@ -80,7 +82,7 @@ For example, I was able to generate the following insight: There is a notable de
 
 Of course, an event is often not the only factor behind revenue changes, but this kind of insight would be valuable for business decisions regarding inventory, promotion, and advertising, especially if the dataset provided other relevant data such as those related to promotional campaigns.
 
-### SNAP Revenue Analysis
+## SNAP Revenue Analysis
 
 Some brief background info: SNAP benefits are distributed for 10 days every month. These dates are the same each month depending on the month. For example: CA distributes them over the first 10 days of each month, but TX and WI spread the days out more throughout each month.
 From the “SNAP Analysis” page, I want to answer: 
@@ -114,7 +116,7 @@ In addition to dates, the calendar csv file contains dates for events (e.g., hol
 
 Extensive transformations were applied to the original data tables to make them conducive for use in PBI.
 
-### Sales Data Transformation with Python
+## Sales Data Transformation with Python
 
 I found it necessary to use Python to process the sales_train_evaluation.csv data due to the complexity of transforming it. It might be doable with SQL, but the level of complexity convinced me to use Python's Pandas library.
 
@@ -132,7 +134,7 @@ The columns continue numerically until "d_1941." The columns d_1 to d_1941 repre
 
 I uploaded here my **sales_data_transformation.py** script, which performed this task.
 
-### Transformations with SQL (Postgres)
+## Transformations with SQL (Postgres)
 
 I have uploaded the SQL script
 
@@ -300,7 +302,7 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
   
 5.	The views that I import to PBI are: sales_view, events_calendar, and calendar_view.
 
-### SQL EDA
+## SQL EDA
 - How many items in each department?
 
   ```
@@ -403,7 +405,7 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
   <img src="images/sql-eda-qoq.PNG" alt="Alt text" width="500"/>
   </p>
 
-### Data Model and DAX
+## Power BI: Data Model and DAX
 
 Again, the three views I imported to PBI are: sales_view, events_calendar, and calendar_view. Once I loaded them, I added three columns to the calendar table via Power Query. They are columns called "Start of Month", "Start of Quarter", and "Start of Week"; each column is a transformation applied to the "Date" column. Below is a snippet of this modified calendar table:
 
@@ -426,7 +428,7 @@ I applied the following DAX functions:
 - HASONEVALUE function to apply the correct filters in matrices.
 - Time intelligence functions such as DATEADD and PARALLELPERIOD.
 - VALUES function to obtain distinct dates.
-- CROSSFILTER function to activate bi-directional filtering and connect the events table to the sales table. The query that used this function, which created the [Revenue: Week of Event] measure, was the nexus of my "Events Analysis" page.
+- CROSSFILTER function to activate bi-directional filtering and connect the events table to the sales table. I used this function to creat the [Revenue: Week of Event] measure, which is the nexus of my "Events Analysis" page.
 
 I would also like to make note of a several more features of my report:
 
