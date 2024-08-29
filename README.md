@@ -23,6 +23,16 @@ The rest of this README will:
 - Cover the data transformation and data modelling processes.
 - Some notes on how I used Power BI.
 
+## The Data
+
+Among the files downloaded from Kaggle, I used the calendar, sales_train_evaluation, and sell_prices csv files, which are uploaded to this repo. The image below shows how the data is organized:
+
+<p align="center">
+<img src="images/data-org-chart.PNG" alt="Alt text" width="800"/>
+</p>
+
+In addition to dates, the calendar csv file contains dates for events (e.g., holidays, major sporting events, etc.) and SNAP benefits. The sales_train_evaluation csv contains data on quantities of items sold each day for each store. The sell_prices csv contains week-to-week price data for every item (this price could differ from store to store given a particular week).
+
 ## Example: Revenue Analysis
 
 Let’s say I’m interested in the revenue of stores in CA. I want to answer questions such as: 
@@ -106,17 +116,14 @@ The FOODS_2 department contributed most to the increased revenue on SNAP days. T
 
 ## Data Transformation
 
-Among the files downloaded from Kaggle, I used the calendar, sales_train_evaluation, and sell_prices csv files, which are the ones I uploaded to this repo. The image below, which I obtained from a Medium article (https://towardsdatascience.com/m5-forecasting-accuracy-24d7f42130de) shows how the data is organized:
+Recall:
 
-<p align="center">
-<img src="images/data-org.PNG" alt="Alt text" width="800"/>
-</p>
-
-In addition to dates, the calendar csv file contains dates for events (e.g., holidays, major sporting events, etc.) and SNAP benefits. The sales_train_evaluation csv contains data on quantities of items sold each day for each store. The sell_prices csv contains week-to-week price data for every item (this price could differ from store to store given a particular week).
+- I utilized the three csv files uploaded to this repo as my dataset.
+- In addition to dates, the calendar csv file contains dates for events (e.g., holidays, major sporting events, etc.) and SNAP benefits. The sales_train_evaluation csv contains data on quantities of items sold each day for each store. The sell_prices csv contains week-to-week price data for every item (this price could differ from store to store given a particular week).
 
 Extensive transformations were applied to the original data tables to make them conducive for use in PBI.
 
-## Sales Data Transformation with Python
+### Sales Data Transformation with Python
 
 I found it necessary to use Python to process the sales_train_evaluation.csv data due to the complexity of transforming it. It might be doable with SQL, but the level of complexity convinced me to use Python's Pandas library.
 
@@ -134,7 +141,7 @@ The columns continue numerically until "d_1941." The columns d_1 to d_1941 repre
 
 I uploaded here my **sales_data_transformation.py** script, which performed this task.
 
-## Transformations with SQL (Postgres)
+### Transformations with SQL (Postgres)
 
 I have uploaded the SQL script
 
@@ -302,7 +309,10 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
   
 5.	The views that I import to PBI are: sales_view, events_calendar, and calendar_view.
 
-## SQL EDA
+### SQL EDA
+
+My SQL script also contains some EDA queries.
+
 - How many items in each department?
 
   ```
