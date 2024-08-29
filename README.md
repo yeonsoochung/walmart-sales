@@ -78,7 +78,7 @@ For example, I was able to generate the following insight: There is a notable de
   <img src="images/events-mtx-4.PNG" alt="Alt text" width="600"/>
   </p>
 	
- 	FOODS_3_444, FOODS_2_266, FOODS_1_096, and FOODS_3_329 made up about 10% of the ($20,382.75) drop in weekly revenue.
+   FOODS_3_444, FOODS_2_266, FOODS_1_096, and FOODS_3_329 made up about 10% of the ($20,382.75) drop in weekly revenue.
 
 Of course, an event is often not the only factor behind revenue changes, but this kind of insight would be valuable for business decisions regarding inventory, promotion, and advertising, especially if the dataset provided other relevant data such as those related to promotional campaigns.
 
