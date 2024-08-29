@@ -69,7 +69,7 @@ The matrices provide further details. Using Matrix-1 and Matrix-2, I can see the
 
 I can use the same process to derive insights like this for any of the other stores/states for a different time period.
 
-### Example: Events Analysis
+## Example: Events Analysis
 
 I acknowledge that the "Events Analysis" page of my report is a bit crowded and unintuitive, but I hope the instructions on it are clear. This page lets you answer questions such as:
 
