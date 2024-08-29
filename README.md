@@ -442,7 +442,9 @@ I applied the following DAX functions:
 
 I would also like to make note of a several more features of my report:
 
-- The months of Jan. 2011 and Apr. – Jun. 2016 were filtered out of the report because of drastic spike and drop of revenue at those edge dates. It appears that fewer data points were provided for Apr. - Jun. 2016 dates.
+- The months of Jan. 2011 and Apr. – Jun. 2016 were filtered out of the report because of drastic spike and drop of revenue at those edge dates.
+  - Jan. 2011 sales only include dates from Jan. 29 and later, so I filtered out those dates.
+  - I'm not sure if fewer data points were provided for Apr. - Jun. 2016 dates or there was actually a drastic drop in revenue, but I decided to filter those out.
 - The original dataset assigned values 1-7 to the days of the week, starting with 1 for Saturday, so, I have set the first day of the week to Saturday.
 - I added columns “Start of Week”, “Start of Month”, and “Start of Quarter” to the calendar_view table via Power Query. This is how I plotted aggregate values in my temporal charts. This is why, for example, when temporal revenue visuals are drilled down to the month level, the months are labeled as MM/01/YYYY. I found this way to be easier for creating visuals rather than using date hierarchies.
 - The YTD (year-to-date) revenue KPI cards display the YTD revenue starting from Jan. 1 of the last date in the filtered date range. For example, if the date filter is set from 2015-05-01 to 2015-09-15, then the YTD revenue is revenue from 2015-01-01 to 2015-09-15; and the Prev. YTD is revenue from 2014-01-01 to 2014-09-15.
@@ -450,4 +452,15 @@ I would also like to make note of a several more features of my report:
 
 ## Conclusion
 
-EDA for someone who wants to perform time series forecasting on this dataset.
+In this personal project, I apply my skills in Python, SQL, and PowerBI (DAX) to:
+
+- Transform the original dataset and load it to PBI for visual and tabular analyses.
+- Perform extensive revenue analysis of Walmart sales data provided by M5/Kaggle.
+
+With the insights that my PBI report provides, I showcase my ability to contribute to a professional setting with skills such as:
+
+- Breaking down a business metric into components to analyze the drivers or causes behind how said metric changes.
+  - This project focused on temporal changes, but it displays skills and throught processes that can be applied to other types of change, such as geographic, demographic, product-related, etc.
+- Analyzing data by aggregating or combining different components.
+- Generating insights that business users/stakeholders would find valuable.
+- Bringing at least an intermediate level of proficiency in Python, SQL, and DAX.
