@@ -25,13 +25,13 @@ The rest of this README will:
 
 ## The Data
 
-Among the files downloaded from Kaggle, I used the calendar, sales_train_evaluation, and sell_prices csv files, which are uploaded to this repo. The image below shows how the data is organized:
+Among the files downloaded from Kaggle, I used the calendar, sales_train_evaluation, and sell_prices CSV files, which are uploaded to this repo. The image below shows how the data is organized:
 
 <p align="center">
 <img src="images/data-org-chart.PNG" alt="Alt text" width="800"/>
 </p>
 
-In addition to dates, the calendar csv file contains dates for events (e.g., holidays, major sporting events, etc.) and SNAP benefits. The sales_train_evaluation csv contains data on quantities of items sold each day for each store. The sell_prices csv contains week-to-week price data for every item (this price could differ from store to store given a particular week).
+In addition to dates, the calendar CSV file contains dates for events (e.g., holidays, major sporting events, etc.) and SNAP benefits. The sales_train_evaluation CSV contains data on quantities of items sold each day for each store. The sell_prices CSV contains week-to-week price data for every item (this price could vary from store to store and/or week-to-week).
 
 ## Example: Revenue Analysis
 
@@ -65,13 +65,13 @@ The matrices provide further details. Using Matrix-1 and Matrix-2, I can see the
   <img src="images/ca2-mtx2a.PNG" alt="Alt text" width="600"/>
   </p>
 
-  I can modify the filter selections to view the top items within different filter contexts.
+	I can modify the filter selections to view the top items within different filter contexts (ex: what are the ).
 
 I can use the same process to derive insights like this for any of the other stores/states for any time period of interest. 
 
 ### Example: Events Analysis
 
-The “Events Analysis” page of my report lets you to answer questions such as:
+The “Events Analysis” page of my report lets you answer questions such as:
 
 - Which events see a spike or drop in revenue the week of the event compared to the week before and after it? How does this performance compare over the years? What does this look like at the state/store level?
 - What categories/departments/items drove this spike or drop in weekly revenue?
@@ -118,14 +118,14 @@ The FOODS_2 department contributed most to the increased revenue on SNAP days. T
 
 Recall:
 
-- I utilized the three csv files uploaded to this repo as my dataset.
-- In addition to dates, the calendar csv file contains dates for events (e.g., holidays, major sporting events, etc.) and SNAP benefits. The sales_train_evaluation csv contains data on quantities of items sold each day for each store. The sell_prices csv contains week-to-week price data for every item (this price could differ from store to store given a particular week).
+- I utilized the three CSV files uploaded to this repo as my dataset.
+- In addition to dates, the calendar CSV file contains dates for events (e.g., holidays, major sporting events, etc.) and SNAP benefits. The sales_train_evaluation CSV contains data on quantities of items sold each day for each store. The sell_prices CSV contains week-to-week price data for every item (this price could differ from store to store given a particular week).
 
 Extensive transformations were applied to the original data tables to make them conducive for use in PBI.
 
 ### Sales Data Transformation with Python
 
-I found it necessary to use Python to process the sales_train_evaluation.csv data due to the complexity of transforming it. It might be doable with SQL, but the level of complexity convinced me to use Python's Pandas library.
+I found it necessary to use Python to process the sales_train_evaluation.CSV data due to the complexity of transforming it. It might be doable with SQL, but the level of complexity convinced me to use Python's Pandas library.
 
 Below is a snippet of the original data table, which has 30,491 rows:
 
@@ -133,7 +133,7 @@ Below is a snippet of the original data table, which has 30,491 rows:
 <img src="images/sales-data-original.PNG" alt="Alt text" width="1000"/>
 </p>
 
-The columns continue numerically until "d_1941." The columns d_1 to d_1941 represent dates ranging from 2011-01-29 to 2016-06-19. The dates need to be in rows for use with PBI, and each date will have as many rows as there were (distinct) items sold in each store that day. Below is a snippet of the post-transformed data table (uploaded to this repo as **sales_data.csv**), which has 18,550,276 rows:
+The columns continue numerically until "d_1941." The columns d_1 to d_1941 represent dates ranging from 2011-01-29 to 2016-06-19. The dates need to be in rows for use with PBI, and each date will have as many rows as there were (distinct) items sold in each store that day. Below is a snippet of the post-transformed data table (uploaded to this repo as **sales_data.CSV**), which has 18,550,276 rows:
 
 <p align="center">
 <img src="images/sales-data-transformed.PNG" alt="Alt text" width="600"/>
@@ -145,7 +145,7 @@ I uploaded here my **sales_data_transformation.py** script, which performed this
 
 I have uploaded the SQL script
 
-I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_prices.csv files to PostgreSQL. Before importing data as views into PBI, I applied the following processing steps to create those views:
+I loaded the transformed sales data (sales_data.CSV), calendar.CSV, and sell_prices.CSV files to PostgreSQL. Before importing data as views into PBI, I applied the following processing steps to create those views:
 
 1.	I added columns for month name and quarter to the calendar table:
 
@@ -205,7 +205,7 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 	<img src="images/events_calendar.PNG" alt="Alt text" width="400"/>
 	</p>
 
-3.	I took the SNAP dates information from calendar.csv and added them as a column to sales_data.csv.
+3.	I took the SNAP dates information from calendar.CSV and added them as a column to sales_data.CSV.
 
 	a. First step was to use extract the dates, snap_CA, snap_TX, and snap_WI columns from the calendar table.
 	
