@@ -292,6 +292,44 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 
 ### SQL EDA
 
+
+
+- I computed the quarter-over-quarter (QOQ) % change in revenue for each store:
+
+  ```
+  	drop materialized view if exists sales_price_qy_mv;
+	create materialized view sales_price_qy_mv as (
+		select sap_mv.*,
+			cv."Quarter", cv."Year"
+		from sales_info_mv sap_mv, 
+			(select "Date", "Quarter", "Year" from calendar_view) cv
+		where sap_mv."Date" = cv."Date"
+	);
+	
+	with qy_store_revenue as (
+		select "Store", "Quarter", "Year", 
+			sum("Quantity" * "Unit Price") as "Revenue"
+		from sales_price_qy_mv
+		group by "Store", "Year", "Quarter"
+	),
+	qoq_store_revenue as (
+		select *, 
+			lag("Revenue", 1) over (partition by "Store" order by "Year", "Quarter") as "Previous Q Revenue"
+			-- "Revenue" over (partition by "Store" order by "Q-Y" rows between 1 preceding and current row) as "Previous Q Revenue"
+		from qy_store_revenue
+	)
+	-- select * from qoq_store_revenue;
+	select "Store", "Quarter", "Year", "Revenue", 
+		round(("Revenue" - "Previous Q Revenue")/"Previous Q Revenue" * 100, 2) as "QoQ % Change"
+	from qoq_store_revenue;
+  ```
+
+  Below is the first 10 rows of the query result, which matches with the time intelligence matrix in my PBI report:
+
+  <p align="center">
+  <img src="images/sql-eda-qoq.PNG" alt="Alt text" width="1000"/>
+  </p>
+
 ### Data Model and DAX
 
 Again, the three views I imported to PBI are: sales_view, events_calendar, and calendar_view. Once I loaded them, I added three columns to the calendar table via Power Query. They are columns called "Start of Month", "Start of Quarter", and "Start of Week"; each column is a transformation applied to the "Date" column. Below is a snippet of this modified calendar table:
