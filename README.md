@@ -23,7 +23,7 @@ The rest of this README will:
 - Cover the data transformation and data modelling processes.
 - Some notes on how I used Power BI.
 
-## The Data
+## Organization of Data
 
 Among the files downloaded from Kaggle, I used the calendar, sales_train_evaluation, and sell_prices CSV files, which are uploaded to this repo. The image below shows how the data is organized:
 
@@ -65,7 +65,7 @@ The matrices provide further details. Using Matrix-1 and Matrix-2, I can see the
   <img src="images/ca2-mtx2a.PNG" alt="Alt text" width="600"/>
   </p>
 
-	I can modify the filter selections to view the top items within different filter contexts (ex: what are the ).
+  I can modify the filter selections to view the top items within different filter contexts (ex: what are the ).
 
 I can use the same process to derive insights like this for any of the other stores/states for any time period of interest. 
 
