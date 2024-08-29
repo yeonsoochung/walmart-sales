@@ -1,4 +1,4 @@
-# Analysis of Walmart Sales Data
+# Revenue Analysis of Walmart Sales Data
 
 **Tools used:** Power BI (DAX), SQL, and Python.
 
