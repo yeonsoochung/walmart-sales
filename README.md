@@ -67,34 +67,34 @@ The matrices provide further details. Using Matrix-1 and Matrix-2, I can see the
 
   I can modify the filter selections to view the top items within different filter contexts (ex: what are the ).
 
-I can use the same process to derive insights like this for any of the other stores/states for any time period of interest. 
+I can use the same process to derive insights like this for any of the other stores/states for a different time period.
 
 ### Example: Events Analysis
 
-The “Events Analysis” page of my report lets you answer questions such as:
+I acknowledge that the "Events Analysis" page of my report is a bit crowded and unintuitive, but I hope the instructions on it are clear. This page lets you answer questions such as:
 
 - Which events see a spike or drop in revenue the week of the event compared to the week before and after it? How does this performance compare over the years? What does this look like at the state/store level?
 - What categories/departments/items drove this spike or drop in weekly revenue?
 
 For example, I was able to generate the following insight: There is a notable decrease in revenue during the week of St. Patrick’s Day. That week generally saw a decrease in revenue compared to the previous week every year from 2011-2016, aggregated across all stores/states. 2012-2014 saw drops of more than 10% each year. In all six years, the week after the event also saw decreases. 
 1.	WI stores experience the largest drop in revenue compared to the other states, especially due to Stores WI_2 and WI_3.
-2.	Let’s look more closely at the week of St. Patrick’s Day in 2014 for Store WI_2, which saw a 22.55% drop in revenue that week. I can use Matrix-3 to see how the categories and departments contributed to the revenue decrease (below is Matrix-2 with the appropriate filters):
+2.	Let’s look more closely at the week of St. Patrick’s Day in 2014 for Store WI_2, which saw a 22.55%, or $20,382.75, drop in revenue that week. I can use Matrix-3 to see how the categories and departments contributed to the revenue decrease (below is Matrix-2 with the appropriate filters):
  
   <p align="center">
   <img src="images/events-mtx-3.PNG" alt="Alt text" width="600"/>
   </p>
 
-3.	With the same filter context, I sort Matrix-4 by week-to-week revenue change in ascending order to rank the items whose revenue drop contributed most to total weekly revenue for WI_2. This tells me that FOODS_3_444, FOODS_2_266, FOODS_1_096, and FOODS_3_329 made up about 10% of the ($20,382.75) drop in weekly revenue:
+3.	With the same filter context, I sort Matrix-4 by week-over-week (WoW) revenue change in ascending order to rank the items whose revenue drop contributed most to total weekly revenue for WI_2. This tells me that FOODS_3_444, FOODS_2_266, FOODS_1_096, and FOODS_3_329 made up about 10% of the $20,382.75 drop in weekly revenue:
  
   <p align="center">
   <img src="images/events-mtx-4.PNG" alt="Alt text" width="600"/>
   </p>
 
-Of course, an event is often not the only factor behind revenue changes, but this kind of insight would be valuable for business decisions regarding inventory, promotion, and advertising, especially if the dataset provided other relevant data such as those related to promotional campaigns.
+Of course, an event is often not the only factor behind revenue swings, but this kind of insight would be valuable for business decisions regarding inventory, promotion, and advertising, especially if the dataset provided other relevant data such as those related to promotional campaigns.
 
 ## SNAP Revenue Analysis
 
-Some brief background info: SNAP benefits are distributed for 10 days every month. These dates are the same each month depending on the month. For example: CA distributes them over the first 10 days of each month, but TX and WI spread the days out more throughout each month.
+Some brief background info: SNAP benefits are distributed for 10 days every month. These dates are the same each month depending on the state. For example: CA distributes them over the first 10 days of each month, but TX and WI spread the days out more throughout the first half each month.
 From the “SNAP Analysis” page, I want to answer: 
 
 - What is the breakdown of revenue generated on SNAP days vs non-SNAP days? What percentage of the revenue comes from food sales on SNAP days vs non-SNAP days?
@@ -106,7 +106,7 @@ I can answer the above questions through different filter contexts via month/yea
 <img src="images/snap-daily-avg.PNG" alt="Alt text" width="600"/>
 </p>
 
-The FOODS category makes up 60.25% of SNAP-date revenue and 56.84% of non-SNAP-date revenue. Interestingly, CA and TX see this difference to be around a rather low 2-3%, but in WI, it is almost 6%. What’s behind this difference? Stores WI_2 and WI_3 are the main drivers. If you select just these two stores on the slicer, the matrix shows a 7.3% difference between “% Revenue SNAP” and “% Revenue Non-SNAP”:
+The FOODS category makes up 60.25% of SNAP-date revenue and 56.84% of non-SNAP-date revenue. Interestingly, CA and TX see this difference to be around a rather low 2-3%, but in WI, it is almost 6%. What’s behind this 6%? Stores WI_2 and WI_3 are the main drivers. If you select just these two stores on the State/Store slicer, the matrix shows a 7.3% difference between “% Revenue SNAP” and “% Revenue Non-SNAP”:
 
 <p align="center">
 <img src="images/snap-mtx.PNG" alt="Alt text" width="600"/>
@@ -133,21 +133,21 @@ Below is a snippet of the original data table, which has 30,491 rows:
 <img src="images/sales-data-original.PNG" alt="Alt text" width="1000"/>
 </p>
 
-The columns continue numerically until "d_1941." The columns d_1 to d_1941 represent dates ranging from 2011-01-29 to 2016-06-19. The dates need to be in rows for use with PBI, and each date will have as many rows as there were (distinct) items sold in each store that day. Below is a snippet of the post-transformed data table (uploaded to this repo as **sales_data.CSV**), which has 18,550,276 rows:
+The columns continue numerically until "d_1941." The columns d_1 to d_1941 represent dates ranging from 2011-01-29 to 2016-06-19, and those columns contain the quantity of each item sold on that day. The dates need to be in rows for use with PBI, and each date will have as many rows as there were (distinct) items sold in each store that day. Below is a snippet of the post-transformed data table (uploaded to this repo as **sales_data.CSV**), which has 18,550,276 rows:
 
 <p align="center">
 <img src="images/sales-data-transformed.PNG" alt="Alt text" width="600"/>
 </p>
 
-I uploaded here my **sales_data_transformation.py** script, which performed this task.
+I uploaded my **sales_data_transformation.py** script, which performed this task.
 
 ### Transformations with SQL (Postgres)
 
-I have uploaded the SQL script
+I have uploaded the SQL script that contains all the code blocks below for data transformation and some high-level EDA.
 
-I loaded the transformed sales data (sales_data.CSV), calendar.CSV, and sell_prices.CSV files to PostgreSQL. Before importing data as views into PBI, I applied the following processing steps to create those views:
+I loaded the transformed sales data (sales_data.CSV), calendar.CSV, and sell_prices.CSV files to PostgreSQL. I applied the following processing steps to the loaded data tables before creating them as views to be imported into PBI:
 
-1.	I added columns for month name and quarter to the calendar table:
+1.	I created a view (calendar_view) that added columns for month name and quarter to the calendar table:
 
 	```
 	drop view if exists calendar_view cascade;
@@ -184,7 +184,7 @@ I loaded the transformed sales data (sales_data.CSV), calendar.CSV, and sell_pri
 	<img src="images/calendar_view.PNG" alt="Alt text" width="800"/>
 	</p>
 
-2.	Created a separate view for event dates:
+2.	Created a view (events_calendar) for event dates:
 
 	```
 	drop view if exists events_calendar;
@@ -205,9 +205,9 @@ I loaded the transformed sales data (sales_data.CSV), calendar.CSV, and sell_pri
 	<img src="images/events_calendar.PNG" alt="Alt text" width="400"/>
 	</p>
 
-3.	I took the SNAP dates information from calendar.CSV and added them as a column to sales_data.CSV.
+3.	I took the SNAP dates information from calendar.CSV and added them as a column to the data in sales_data.CSV.
 
-	a. First step was to use extract the dates, snap_CA, snap_TX, and snap_WI columns from the calendar table.
+	a. First step was to extract the dates, snap_CA, snap_TX, and snap_WI columns from the calendar table, which I used to create the view snap_calendar.
 	
 	```
 	drop view if exists snap_calendar;
@@ -251,7 +251,7 @@ I loaded the transformed sales data (sales_data.CSV), calendar.CSV, and sell_pri
 	);
 	```
 	
-   	The first join operation replaced “d_i” values (d_1, d_2, …, d_1941) with their corresponding dates (2011-01-29 to 2016-06-19). The second one added a column of {0, 1} as SNAP dates to sales_intermed_view (created above), which will eventually become sales_view.    	
+   	The first join operation replaced “d_i” values (d_1, d_2, …, d_1941) with their corresponding dates (2011-01-29 to 2016-06-19). The second join added a column of 1's and 0's (i.e., True and False) as SNAP dates to sales_intermed_view (created above), which will eventually become sales_view.    	
 
 4.	I took a few steps to add a column of unit prices for the item associated with each row in sales_intermed_view.
 
@@ -291,7 +291,7 @@ I loaded the transformed sales data (sales_data.CSV), calendar.CSV, and sell_pri
 	);
 	```
 	
-   	d. Finally, I sort the query result (sales_info_mv) by date to create my sales_view:
+   	d. Finally, I sort the materialized view (sales_info_mv) by date to create my sales_view:
 	
 	```
 	drop view if exists sales_view;
@@ -307,7 +307,7 @@ I loaded the transformed sales data (sales_data.CSV), calendar.CSV, and sell_pri
 	  <img src="images/sales_view.PNG" alt="Alt text" width="1000"/>
 	  </p>
   
-5.	The views that I import to PBI are: sales_view, events_calendar, and calendar_view.
+5.	The views that I imported to PBI are: sales_view, events_calendar, and calendar_view.
 
 ### SQL EDA
 
@@ -409,7 +409,7 @@ My SQL script also contains some EDA queries.
 	from qoq_store_revenue;
   ```
 
-  Below is the first 10 rows of the query result, which matches with the time intelligence matrix in my PBI report:
+  Below is the first 10 rows of the query result, which matches with the time intelligence matrix (on the "Time Ingelligence" page) in my PBI report:
 
   <p align="center">
   <img src="images/sql-eda-qoq.PNG" alt="Alt text" width="500"/>
@@ -417,13 +417,13 @@ My SQL script also contains some EDA queries.
 
 ## Power BI: Data Model and DAX
 
-Again, the three views I imported to PBI are: sales_view, events_calendar, and calendar_view. Once I loaded them, I added three columns to the calendar table via Power Query. They are columns called "Start of Month", "Start of Quarter", and "Start of Week"; each column is a transformation applied to the "Date" column. Below is a snippet of this modified calendar table:
+Again, the three views I imported to PBI are: sales_view, events_calendar, and calendar_view. The calendar_view is my dimension table (I'll call this the calendar table from now on in the context of PBI), and the other two are fact tables (to be referred to as events and sales tables from hereon). Once I loaded them, I added three columns to the calendar table via Power Query. The columns are "Start of Month", "Start of Quarter", and "Start of Week"; each column is a transformation applied to the "Date" column. Below is a snippet of this modified calendar table:
 
 <p align="center">
 <img src="images/calendar-pbi.PNG" alt="Alt text" width="900"/>
 </p>
 
-The three tables are connected to each via their date columns, resulting in the following schema:
+The two fact tables are connected to the dimension table via their date columns, resulting in the following schema:
 
 <p align="center">
 <img src="images/schema.PNG" alt="Alt text" width="700"/>
@@ -434,7 +434,7 @@ I applied the following DAX functions:
 - Iterator functions such as SUMX to create the revenue measure and MAXX to extract the max date in a virtual table's column.
 - CALCULATE function to compute revenue with various filter modifiers, such as REMOVEFILTER, ALLEXCEPT, and ALLSELECTED.
 - CALCULATETABLE to create virtual tables within DAX queries.
-- SUMMARIZE and COUNTROW functions to count the number of SNAP and non-SNAP days per month.
+- SUMMARIZE and COUNTROW functions to count the number of SNAP and non-SNAP days per month (I did not want to hard-code in 10 to equal the number of SNAP dates per month).
 - HASONEVALUE function to apply the correct filters in matrices.
 - Time intelligence functions such as DATEADD and PARALLELPERIOD.
 - VALUES function to obtain distinct dates.
@@ -450,3 +450,4 @@ I would also like to make note of a several more features of my report:
 
 ## Conclusion
 
+EDA for someone who wants to perform time series forecasting on this dataset.
