@@ -134,14 +134,17 @@ The columns continue numerically until "d_1941." The columns d_1 to d_1941 repre
 
 I uploaded here my **sales_data_transformation.py** script, which performed this task.
 
-### Transformations with SQL
+### Transformations with SQL (Postgres)
+
+I have uploaded the SQL script
 
 I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_prices.csv files to PostgreSQL. Before importing data as views into PBI, I applied the following processing steps to create those views:
 
 1.	I added columns for month name and quarter to the calendar table:
 
 	```
-	create view calendar_view ("Date", "Week ID", "Weekday", "Day Number", "Month Number", "Month", "Quarter", "Year") as (
+	drop view if exists calendar_view cascade;
+ 	create view calendar_view ("Date", "Week ID", "Weekday", "Day Number", "Month Number", "Month", "Quarter", "Year") as (
 		select date, week_id, weekday, wday, month,
 			case
 				when month = 1 then 'January'
@@ -177,7 +180,8 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 2.	Created a separate view for event dates:
 
 	```
-	create view events_calendar as (
+	drop view if exists events_calendar;
+ 	create view events_calendar as (
 		select date as "Date", event_name_1 as "Event Name", event_type_1 as "Event Type"
 		from calendar
 		where event_name_1 is not null
@@ -199,7 +203,8 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 	a. First step was to use extract the dates, snap_CA, snap_TX, and snap_WI columns from the calendar table.
 	
 	```
-	create view snap_calendar ("Date", "State", "SNAP") as ( 
+	drop view if exists snap_calendar;
+ 	create view snap_calendar ("Date", "State", "SNAP") as ( 
 		select date, 'CA' as "State", "snap_CA"
 		from calendar
 		union
@@ -221,7 +226,8 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
   	b. The statement below performs two join operations, which I'll explain:
 	
 	```
-	create view sales_intermed_view ("Date", "Week ID", "Item", "Dept", "Category", "Store", "State", "Quantity") as (
+	drop view if exists sales_intermed_view cascade;
+ 	create view sales_intermed_view ("Date", "Week ID", "Item", "Dept", "Category", "Store", "State", "Quantity") as (
 		with sales_dates as (
 			select date, week_id, item_id, dept_id, cat_id, store_id, state_id, qty
 			from sales s
@@ -245,11 +251,13 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
    	a. I created materialized views of sales_intermed_view and the prices table so that I could add indexes to them for query optimization:
 	
 	```
-	create materialized view sales_intermed_mv as (
+	drop materialized view if exists sales_intermed_mv cascade;
+ 	create materialized view sales_intermed_mv as (
 		select * from sales_intermed_view
 	);
 	
-	create materialized view prices_mv ("Store", "Item", "Week ID", "Unit Price") as (
+	drop materialized view if exists prices_mv cascade;
+ 	create materialized view prices_mv ("Store", "Item", "Week ID", "Unit Price") as (
 		select * from prices
 	);
 	```
@@ -257,14 +265,17 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
    	b. I created indexes on the materialized views:
 	
 	```
-	create index idx_sales_store_item on sales_intermed_mv("Store", "Item", "Week ID");
+	drop index if exists idx_sales_store_item;
+	drop index if exists idx_prices_store_item;
+ 	create index idx_sales_store_item on sales_intermed_mv("Store", "Item", "Week ID");
 	create index idx_prices_store_item on prices_mv("Store", "Item", "Week ID");
 	```
 	
    	 c. Thanks to indexing, the join operation below will run much more quicky (~1 min 30 sec) than without it (the query was still running after 30 min). Recall that I also have to join on "Week ID" to account for week-to-week item price changes.
 	
 	```
-	create materialized view sales_info_mv as (
+	drop materialized view if exists sales_info_mv cascade;
+ 	create materialized view sales_info_mv as (
 		select smv.*,
 			pmv."Unit Price"
 		from sales_intermed_mv smv
@@ -276,7 +287,8 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
    	d. Finally, I sort the query result (sales_info_mv) by date to create my sales_view:
 	
 	```
-	create view sales_view as (
+	drop view if exists sales_view;
+ 	create view sales_view as (
 		select * from sales_info_mv
 		order by "Date"
 	);
@@ -291,8 +303,72 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 5.	The views that I import to PBI are: sales_view, events_calendar, and calendar_view.
 
 ### SQL EDA
+- How many items in each department?
 
+  ```
+  with dept_item_list as (
+	select "Dept", "Item"
+	from sales_view
+	group by "Dept", "Item"
+  )
+  select "Dept", count("Item")
+  from dept_item_list
+  group by "Dept";
+  ```
 
+  Output:
+
+  <p align="center">
+  <img src="images/sql-eda-item-count.PNG" alt="Alt text" width="1000"/>
+  </p>
+
+- Revenue generated by each state?
+
+  ```
+  with state_revenues as (
+	select "State",
+		sum("Quantity" * "Unit Price") as "Revenue"
+	from sales_info_mv
+	group by "State"
+),
+total_revenue as (
+	select sum("Revenue") as "Total Revenue"
+	from state_revenues
+)
+select state_revenues.*,
+	round(state_revenues."Revenue" / total_revenue."Total Revenue" * 100, 2) as "% Total Revenue"
+from state_revenues, total_revenue;
+  ```
+
+  Output:
+
+  <p align="center">
+  <img src="images/sql-eda-state-revenue.PNG" alt="Alt text" width="1000"/>
+  </p>
+
+- Revenue generated by each store?
+
+  ```
+  with store_revenues as (
+	select "Store",
+		sum("Quantity" * "Unit Price") as "Revenue"
+	from sales_info_mv
+	group by "Store"
+),
+total_revenue as (
+	select sum("Revenue") as "Total Revenue"
+	from store_revenues
+)
+select store_revenues.*,
+	round(store_revenues."Revenue" / total_revenue."Total Revenue" * 100, 2) as "% Total Revenue"
+from store_revenues, total_revenue;
+  ```
+
+  Output:
+
+  <p align="center">
+  <img src="images/sql-eda-store-revenue.PNG" alt="Alt text" width="1000"/>
+  </p>  
 
 - I computed the quarter-over-quarter (QOQ) % change in revenue for each store:
 
