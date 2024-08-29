@@ -43,15 +43,15 @@ The matrices provide further details. Using Matrix-1 and Matrix-2, I can see the
 
 1.	Store CA_2 saw a net growth in revenue of $55,287.90 from May to June. Increase in revenue from the FOODS_2 department made up 35.15% of the $55,287.90. Increase in revenue from FOODS_3 made up 41.45%, and increase in revenue from HOUSEHOLD_1 made up 13.26%. These were the top three departments in terms of contribution to the $55,287.90 net growth, which agrees with what we concluded visually from the line charts.
 
-<p align="center">
-<img src="images/ca2-mtx1.PNG" alt="Alt text" width="800"/>
-</p>
+  <p align="center">
+  <img src="images/ca2-mtx1.PNG" alt="Alt text" width="800"/>
+  </p>
 
 2.	I can use Matrix-2 to see which items contributed the most to the change in CA_2’s revenue from May to June through different filters. Over all categories and departments, the following items were the top six contributors to the revenue spike, and they all happened to be from the FOODS_3 department:
 
-<p align="center">
-<img src="images/ca2-mtx2a.PNG" alt="Alt text" width="600"/>
-</p>
+  <p align="center">
+  <img src="images/ca2-mtx2a.PNG" alt="Alt text" width="600"/>
+  </p>
 
   I can modify the filter selections to view the top items within different filter contexts.
 
@@ -68,17 +68,17 @@ For example, I was able to generate the following insight: There is a notable de
 1.	WI stores experience the largest drop in revenue compared to the other states, especially due to Stores WI_2 and WI_3.
 2.	Let’s look more closely at the week of St. Patrick’s Day in 2014 for Store WI_2, which saw a 22.55% drop in revenue that week. I can use Matrix-3 to see how the categories and departments contributed to the revenue decrease (below is Matrix-2 with the appropriate filters):
  
-<p align="center">
-<img src="images/events-mtx-3.PNG" alt="Alt text" width="600"/>
-</p>
+  <p align="center">
+  <img src="images/events-mtx-3.PNG" alt="Alt text" width="600"/>
+  </p>
 
 3.	With the same filter setting, I sort Matrix-4 by week-to-week revenue change in ascending order to rank the items whose revenue drop contributed most to total weekly revenue for WI_2:
  
-<p align="center">
-<img src="images/events-mtx-4.PNG" alt="Alt text" width="600"/>
-</p>
-
-FOODS_3_444, FOODS_2_266, FOODS_1_096, and FOODS_3_329 made up about 10% of the ($20,382.75) drop in weekly revenue.
+  <p align="center">
+  <img src="images/events-mtx-4.PNG" alt="Alt text" width="600"/>
+  </p>
+	
+ 	FOODS_3_444, FOODS_2_266, FOODS_1_096, and FOODS_3_329 made up about 10% of the ($20,382.75) drop in weekly revenue.
 
 Of course, an event is often not the only factor behind revenue changes, but this kind of insight would be valuable for business decisions regarding inventory, promotion, and advertising, especially if the dataset provided other relevant data such as those related to promotional campaigns.
 
@@ -294,11 +294,11 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
 	);
 	```
 		
-	The first 10 rows sales_view:
+	  The first 10 rows sales_view:
 
-	<p align="center">
-	<img src="images/sales_view.PNG" alt="Alt text" width="1000"/>
-	</p>
+	  <p align="center">
+	  <img src="images/sales_view.PNG" alt="Alt text" width="1000"/>
+	  </p>
   
 5.	The views that I import to PBI are: sales_view, events_calendar, and calendar_view.
 
