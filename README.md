@@ -326,7 +326,7 @@ I loaded the transformed sales data (sales_data.csv), calendar.csv, and sell_pri
   Below is the first 10 rows of the query result, which matches with the time intelligence matrix in my PBI report:
 
   <p align="center">
-  <img src="images/sql-eda-qoq.PNG" alt="Alt text" width="1000"/>
+  <img src="images/sql-eda-qoq.PNG" alt="Alt text" width="500"/>
   </p>
 
 ### Data Model and DAX
