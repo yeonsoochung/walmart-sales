@@ -463,4 +463,4 @@ With the insights that my PBI report provides, I showcase my ability to contribu
   - This project focused on temporal changes, but it displays skills and throught processes that can be applied to other types of change, such as geographic, demographic, product-related, etc.
 - Analyzing data by aggregating or combining different components.
 - Generating insights that business users/stakeholders would find valuable.
-- Bringing at least an intermediate level of proficiency in Python, SQL, and DAX.
+- Bringing a strong understanding of Python, SQL, and DAX.
