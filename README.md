@@ -13,7 +13,7 @@ In addition to the temporal revenue trends visualized by line charts and the agg
   - In relation, revenue trends aggregated at the weekly level show pretty consistent spikes at the first two weeks of each month, which coincide with the part of the month when SNAP benefits are distributed.
 - Time intelligence functions were applied throughout my report to compare revenue and revenue breakdown (including percentages) over week-to-week, month-to-month, and year-to-year time periods.
 
-The insights that my report provides can be used to guide decisions on inventory, promotions, ads, and marketing.
+The insights that my report provides can be used to guide decisions on promotional campaigns, ads, and marketing. I could easily recreate this report with a [Quantity Sold] measure instead of [Revenue], which would provide actionable insights on inventory management.
 
 The rest of this README will:
 
@@ -432,7 +432,7 @@ I applied the following DAX functions:
 
 I would also like to make note of a several more features of my report:
 
-- Months of Jan. 2011 and Apr. – Jun. 2016 were filtered out of report because of drastic spike and drop of revenue plot at those edge dates.
+- The months of Jan. 2011 and Apr. – Jun. 2016 were filtered out of the report because of drastic spike and drop of revenue at those edge dates. It appears that fewer data points were provided for Apr. - Jun. 2016 dates.
 - The original dataset assigned values 1-7 to the days of the week, starting with 1 for Saturday, so, I have set the first day of the week to Saturday.
 - I added columns “Start of Week”, “Start of Month”, and “Start of Quarter” to the calendar_view table via Power Query. This is how I plotted aggregate values in my temporal charts. This is why, for example, when temporal revenue visuals are drilled down to the month level, the months are labeled as MM/01/YYYY. I found this way to be easier for creating visuals rather than using date hierarchies.
 - The YTD (year-to-date) revenue KPI cards display the YTD revenue starting from Jan. 1 of the last date in the filtered date range. For example, if the date filter is set from 2015-05-01 to 2015-09-15, then the YTD revenue is revenue from 2015-01-01 to 2015-09-15; and the Prev. YTD is revenue from 2014-01-01 to 2014-09-15.
