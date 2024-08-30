@@ -2,7 +2,7 @@
 
 **Tools used:** Power BI (DAX), SQL, and Python.
 
-**Dataset:** https://www.kaggle.com/competitions/m5-forecasting-accuracy/data
+**Data source:** https://www.kaggle.com/competitions/m5-forecasting-accuracy/data
 
 ## Insights
 In addition to the temporal revenue trends visualized by line charts and the aggregated metrics by column charts, my PBI Desktop report can be used to draw deeper insights such as:
