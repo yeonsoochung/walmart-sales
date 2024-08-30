@@ -26,14 +26,14 @@ The rest of this README will:
 
 ## Project Files
 
-- Among the files downloaded from Kaggle, I used the calendar, sales_train_evaluation, and sell_prices CSV files. I also used a CSV file called sales_data, which is the result of transforming sales_train_evaluation.CSV (this process is explained later). These files can be accessed here:
+- Among the files downloaded from Kaggle, I used the calendar, sales_train_evaluation, and sell_prices CSV files. I also used a CSV file called sales_data, which is the result of transforming sales_train_evaluation.CSV (this process is explained later). These files can be downloaded here:
   - In addition to dates, the calendar CSV file contains dates for events (e.g., holidays, major sporting events, etc.) and SNAP benefits.
   - The sales_train_evaluation CSV contains data on quantities of items sold each day for each store.
   - The sell_prices CSV contains week-to-week price data for every item (this price could vary from store to store and/or week-to-week).
 - walmart_sales_data_transformation.py is my Python script that performs the said transformation above.
 - m5-walmart.sql is my SQL script that applies further transformations to the data for loading into PBI. It also contains a few EDA code blocks.
 - walmart-revenue-project.pdf is a PDF of my PBI report.
-- MyPBI Desktop report can accessed here: 
+- MyPBI Desktop report can downloaded here: 
 
 ## Organization of Data
 
