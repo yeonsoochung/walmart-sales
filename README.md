@@ -5,7 +5,7 @@
 **Dataset:** https://www.kaggle.com/competitions/m5-forecasting-accuracy/data
 
 ## Insights
-In addition to the temporal revenue trends visualized by line charts and the aggregated metrics by column charts, my PBI report can be used to draw deeper insights such as:
+In addition to the temporal revenue trends visualized by line charts and the aggregated metrics by column charts, my PBI Desktop report can be used to draw deeper insights such as:
 
 - The categories (FOODS, HOBBIES, and HOUSEHOLD), departments (which are subcategories), and individual items that contributed most to a month-to-month increase or decrease in revenue, both visually and quantitatively.
 - Weekly revenue generated during the week of notable events (e.g., holidays, major sporting events, etc.) compared with neighboring weeks. Revenue changes are quantitatively broken down by categories, departments, and individual items to enable comparison at those grains.
@@ -23,9 +23,17 @@ The rest of this README will:
 - Cover the data transformation and data modelling processes.
 - Some notes on how I used Power BI.
 
+## Uploaded Files
+
+- Among the files downloaded from Kaggle, I used the calendar, sales_train_evaluation, and sell_prices CSV files, which are uploaded to this repo. I also uploaded a CSV file called sales_data, which is the result of transforming sales_train_evaluation.CSV (this process is explained later). These files are all in the data folder.
+- walmart_sales_data_transformation.py is my Python script that performs the said transformation above.
+- m5-walmart.sql is my SQL script that applies further transformations to the data for loading into PBI. It also contains a few EDA code blocks.
+- walmart-revenue-project.pdf is a PDF of my PBI report.
+- walmart-revene-project-final.pbix is my PBI Desktop report.
+
 ## Organization of Data
 
-Among the files downloaded from Kaggle, I used the calendar, sales_train_evaluation, and sell_prices CSV files, which are uploaded to this repo. The image below shows how the data is organized:
+The image below shows how the data is organized:
 
 <p align="center">
 <img src="images/data-org-chart.PNG" alt="Alt text" width="800"/>
