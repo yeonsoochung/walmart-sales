@@ -18,7 +18,7 @@ The insights that my report provides can be used to guide decisions on promotion
 
 The rest of this README will:
 
-- List the files I've uploaded to this repo, and provide links to those that were too large to upload here.
+- Describe the files I've uploaded to this repo, and provide links to those that were too large to upload here.
 - Go over how the Kaggle data is organized at a high-level.
 - Describe a few detailed examples of how insights can be generated from my PBI report.
 - Cover the data transformation and data modelling processes.
