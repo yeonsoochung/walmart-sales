@@ -75,8 +75,6 @@ The matrices provide further details. Using Matrix-1 and Matrix-2, I can see the
   <img src="images/ca2-mtx2.PNG" alt="Alt text" width="600"/>
   </p>
 
-  I can modify the filter selections to view the top items within different filter contexts (ex: what are the ).
-
 I can use the same process to derive insights like this for any of the other stores/states for a different time period.
 
 ## Example: Events Analysis
