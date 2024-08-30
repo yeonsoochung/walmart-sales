@@ -125,7 +125,7 @@ Extensive transformations were applied to the original data tables to make them 
 
 ### Sales Data Transformation with Python
 
-I found it necessary to use Python to process the sales_train_evaluation.CSV data due to the complexity of transforming it. It might be doable with SQL, but the level of complexity convinced me to use Python's Pandas library.
+I found it necessary to use Python (Pandas) to process the sales_train_evaluation.CSV data because it has nearly 2,000 columns, and loading a table with so many columns into PostgreSQL is manually intensive.
 
 Below is a snippet of the original data table, which has 30,491 rows:
 
