@@ -126,7 +126,7 @@ The FOODS_2 department contributed most to the increased revenue on SNAP days. T
 
 Recall:
 
-- I utilized the three CSV files uploaded to this repo as my dataset.
+- I started off with three of the five CSV files downloaded from Kaggle. I used Python to transform sales_train_evaluation.CSV, resulting in sales_data.CSV.
 - In addition to dates, the calendar CSV file contains dates for events (e.g., holidays, major sporting events, etc.) and SNAP benefits. The sales_train_evaluation CSV contains data on quantities of items sold each day for each store. The sell_prices CSV contains week-to-week price data for every item (this price could differ from store to store given a particular week).
 
 Extensive transformations were applied to the original data tables to make them conducive for use in PBI.
@@ -141,7 +141,7 @@ Below is a snippet of the original data table, which has 30,491 rows:
 <img src="images/sales-data-original.PNG" alt="Alt text" width="1000"/>
 </p>
 
-The columns continue numerically until "d_1941." The columns d_1 to d_1941 represent dates ranging from 2011-01-29 to 2016-06-19, and those columns contain the quantity of each item sold on that day. The dates need to be in rows for use with PBI, and each date will have as many rows as there were (distinct) items sold in each store that day. Below is a snippet of the post-transformed data table (uploaded to this repo as **sales_data.CSV**), which has 18,550,276 rows:
+The columns continue numerically until "d_1941." The columns d_1 to d_1941 represent dates ranging from 2011-01-29 to 2016-06-19, and those columns contain the quantity of each item sold on that day. **The dates need to be in rows for use with PBI, and each date will have as many rows as there were (distinct) items sold in each store that day.** Below is a snippet of the post-transformed data table (uploaded to this repo as **sales_data.CSV**), which has 18,550,276 rows but only 7 columns:
 
 <p align="center">
 <img src="images/sales-data-transformed.PNG" alt="Alt text" width="600"/>
