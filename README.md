@@ -315,7 +315,7 @@ I loaded the transformed sales data (sales_data.CSV), calendar.CSV, and sell_pri
 	  <img src="images/sales_view.PNG" alt="Alt text" width="1000"/>
 	  </p>
   
-5.	The views that I imported to PBI are: sales_view, events_calendar, and calendar_view.
+5.	The SQL views that I imported to PBI are: sales_view, events_calendar, and calendar_view.
 
 ### SQL EDA
 
