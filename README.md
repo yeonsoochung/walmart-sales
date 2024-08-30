@@ -114,7 +114,7 @@ I can answer the above questions through different filter contexts via month/yea
 <img src="images/snap-daily-avg.PNG" alt="Alt text" width="600"/>
 </p>
 
-The FOODS category makes up 60.25% of SNAP-date revenue and 56.84% of non-SNAP-date revenue. Interestingly, CA and TX see this difference to be around a rather low 2-3%, but in WI, it is almost 6%. What’s behind this 6%? Stores WI_2 and WI_3 are the main drivers. If you select just these two stores on the State/Store slicer, the matrix shows a 7.3% difference between “% Revenue SNAP” and “% Revenue Non-SNAP”:
+Across the entire dataset, the FOODS category makes up 60.25% of SNAP-date revenue and 56.84% of non-SNAP-date revenue. Interestingly, CA and TX see this difference to be around a rather low 2-3%, but in WI, it is almost 6%. What’s behind this 6%? Stores WI_2 and WI_3 are the main drivers. If you select just these two stores on the State/Store slicer, the matrix shows a 7.3% difference between “% Revenue SNAP” and “% Revenue Non-SNAP”:
 
 <p align="center">
 <img src="images/snap-mtx.PNG" alt="Alt text" width="700"/>
