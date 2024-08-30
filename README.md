@@ -10,7 +10,7 @@ In addition to the temporal revenue trends visualized by line charts and the agg
 - The categories (FOODS, HOBBIES, and HOUSEHOLD), departments (which are subcategories), and individual items that contributed most to a month-to-month increase or decrease in revenue, both visually and quantitatively.
 - Weekly revenue generated during the week of notable events (e.g., holidays, major sporting events, etc.) compared with neighboring weeks. Revenue changes are quantitatively broken down by categories, departments, and individual items to enable comparison at those grains.
 - Generally, days that SNAP (food assistance) benefits are distributed see higher average daily sales than non-SNAP days. These differences are visualized and quantified across states and stores. Furthermore, the (percentage) breakdown of SNAP revenue and non-SNAP revenue by category, department, and item can be compared quantitatively.
-  - Revenue trends aggregated at the weekly level show pretty consistent spikes at the first two weeks of each month, which coincide with the part of the month when SNAP benefits are distributed.
+  - Revenue trends aggregated at the weekly level show consistent spikes at the first two weeks of each month, which coincide with the part of the month when SNAP benefits are distributed.
   - At the daily level, revenue spikes occur on Saturdays/Sundays.
 - Time intelligence functions were applied throughout my report to compare revenue and revenue breakdown (by state, store, category, department, and item) over week-to-week, month-to-month, and year-to-year time periods.
 
