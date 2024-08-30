@@ -460,15 +460,14 @@ I would also like to make note of a several more features of my report:
 
 ## Conclusion
 
-In this personal project, I apply my skills in Python, SQL, and PowerBI (DAX) to:
+In this personal project, I apply my skills in Power BI (DAX), SQL, and Python to:
 
 - Transform the original dataset and load it to PBI for visual and tabular analyses.
 - Perform extensive revenue analysis of Walmart sales data.
 
-With the insights that my PBI report provides, I showcase my ability to contribute to a professional setting with skills such as:
+With the insights that my PBI report provides, I showcase my ability to contribute to a professional setting with additional skills such as:
 
 - Breaking down a business metric into components to analyze the drivers or causes behind how said metric changes.
   - This project focused on temporal changes, but it displays skills and thought processes that can be applied to other types of change, such as geographic, demographic, product-related, etc.
 - Analyzing data by aggregating or combining different components.
 - Generating actionable insights that business users/stakeholders.
-- Python, SQL, and DAX.
