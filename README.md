@@ -33,7 +33,7 @@ The rest of this README will:
 - walmart_sales_data_transformation.py is my Python script that performs the said transformation above.
 - m5-walmart.sql is my SQL script that applies further transformations to the data for loading into PBI. It also contains a few EDA code blocks.
 - walmart-revenue-project.pdf is a PDF of my PBI report.
-- MyPBI Desktop report can downloaded here: https://drive.google.com/uc?export=download&id=1wpBFTVeryHvCFP-mLZMUvKixJDxzSd-8
+- MyPBI Desktop report can downloaded here: https://drive.google.com/uc?export=download&id=1Tl_sqJ5vn6DvAcDT4noGIDdbmdTWjvAP
 
 ## Organization of Data
 
