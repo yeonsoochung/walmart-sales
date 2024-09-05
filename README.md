@@ -456,7 +456,7 @@ I would also like to make note of a several more features of my report:
 - The original dataset assigned values 1-7 to the days of the week, starting with 1 for Saturday, so, I have set the first day of the week to Saturday.
 - I added columns “Start of Week”, “Start of Month”, and “Start of Quarter” to the calendar table via Power Query. This is how I plotted aggregate values in my temporal charts. This is why, for example, when temporal revenue visuals are drilled down to the month level, the months are labeled as MM/01/YYYY. I found this way to be easier for creating visuals rather than using date hierarchies.
 - The YTD (year-to-date) revenue KPI cards display the YTD revenue starting from Jan. 1 of the final date in the filtered date range. For example, if the date filter is set from 2015-05-01 to 2015-09-15, then the YTD revenue is revenue from 2015-01-01 to 2015-09-15; and the Prev. YTD is revenue from 2014-01-01 to 2014-09-15.
-- Similarly, the MTD (month-to-date) KPI cards display the MTD revenue starting from the beginning of the month that is at the end of the date filter range. Ex: if the date range is filtered to 2014-03-08 to 2014-03-22, the MTD revenue is revenue from 2014-03-01 to 2014-03-22; and the Prev. MTD is revenue from 2013-03-01 to 2013-03-22.
+- Similarly, the MTD (month-to-date) KPI cards display the MTD revenue starting from the beginning of the month that is at the end of the date filter range. Ex: if the date range is filtered from 2014-03-08 to 2014-03-22, the MTD revenue is revenue from 2014-03-01 to 2014-03-22; and the Prev. MTD is revenue from 2013-03-01 to 2013-03-22.
 
 ## Conclusion
 
