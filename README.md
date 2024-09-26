@@ -26,7 +26,7 @@ The rest of this README will:
 
 ## Project Files
 
-- MyPBI Desktop report can downloaded here: https://drive.google.com/uc?export=download&id=1Tl_sqJ5vn6DvAcDT4noGIDdbmdTWjvAP
+- My PBI Desktop report can downloaded here: https://drive.google.com/uc?export=download&id=1Tl_sqJ5vn6DvAcDT4noGIDdbmdTWjvAP
 - Among the files downloaded from Kaggle, I used the calendar, sales_train_evaluation, and sell_prices CSV files. I also used a CSV file called sales_data, which is the result of transforming sales_train_evaluation.CSV (this process is explained later). These files can be downloaded here: https://drive.google.com/uc?export=download&id=19vWOX6LHVYAIsM5zVApJDAQwD-aK2HhI
   - In addition to dates, the calendar CSV file contains dates for events (e.g., holidays, major sporting events, etc.) and SNAP benefits.
   - The sales_train_evaluation CSV contains data on quantities of items sold each day for each store.
